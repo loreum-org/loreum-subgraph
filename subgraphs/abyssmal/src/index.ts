@@ -1,4 +1,3 @@
-
 import { Approvals } from "../generated/schema";
 import { Approval } from "../generated/Abyssmal/Abyssmal";
 
