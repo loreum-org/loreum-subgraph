@@ -1,0 +1,22 @@
+{
+  "name": "abyssmal",
+  "description": "Loreum Abyssmal Collection",
+  "version": "1.0.0",
+  "repository": "git@github.com:looksrare/subgraphs.git",
+  "author": "Loreum",
+  "license": "MIT",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build:local": "graph build subgraph.yaml --network hardhat",
+    "build:goerli": "graph build subgraph.yaml --network goerli",
+    "build:mainnet": "graph build subgraph.yaml --network mainnet",
+    "create:local": "graph create --node http://localhost:8020/ abyssmal",
+    "remove:local": "graph remove --node http://localhost:8020/ abyssmal",
+    "deploy:local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 abyssmal --version-label v0.0.1",
+    "deploy:goerli": "graph deploy --product hosted-service --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ xhad/abyssmal subgraph.yaml --network goerli",
+    "deploy:mainnet": "graph deploy --product hosted-service --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ looksrare/aggregator subgraph.yaml --network mainnet",
+    "deploy:studio": "graph codegen subgraph.yaml && graph build subgraph.yaml && graph deploy --studio abyssmal --network mainnet",
+    "test": "graph test -r",
+    "test:lerna": "graph codegen subgraph.yaml && graph build subgraph.yaml && graph test -r"
+  }
+}

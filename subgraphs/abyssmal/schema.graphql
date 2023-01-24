@@ -1,0 +1,13 @@
+type Approvals @entity {
+  " { owner - approved - tokenId } "
+  id: ID!
+
+  " Address of Owner "
+  owner: String!
+
+  " Approved address "
+  approved: String!
+
+  " NFT tokenId "
+  tokenId: Int!
+}
