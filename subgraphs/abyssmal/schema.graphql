@@ -1,5 +1,5 @@
-type Approvals @entity {
-  " { owner - approved - tokenId } "
+type ApprovalTx @entity {
+  " { transaction hash - logIndex } "
   id: ID!
 
   " Address of Owner "
@@ -10,4 +10,29 @@ type Approvals @entity {
 
   " NFT tokenId "
   tokenId: Int!
+}
+
+type ApprovalForAllTx @entity {
+  " { transaction hash - logIndex } "
+  id: ID!
+
+  " Address of Owner "
+  owner: String!
+
+  " Operator address "
+  operator: String!
+
+  " Is Operator Approved for all "
+  approved: Boolean!
+}
+
+type MintCostUpdatedTx @entity {
+  " { transaction hash - logIndex } "
+  id: ID!
+
+  " old mint cost"
+  oldMintCost: BigInt!
+
+  " new mint cost"
+  newMintCost: BigInt!
 }

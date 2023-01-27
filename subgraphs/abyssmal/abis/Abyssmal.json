@@ -12,11 +12,6 @@
         "type": "string"
       },
       {
-        "internalType": "string",
-        "name": "tokenUri_",
-        "type": "string"
-      },
-      {
         "internalType": "uint16",
         "name": "maxSupply_",
         "type": "uint16"
@@ -521,7 +516,7 @@
         "type": "string"
       }
     ],
-    "stateMutability": "view",
+    "stateMutability": "pure",
     "type": "function"
   },
   {

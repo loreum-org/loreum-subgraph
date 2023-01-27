@@ -13,11 +13,18 @@ dataSources:
       apiVersion: 0.0.6
       language: wasm/assemblyscript
       entities:
-        - Approval
+        - ApprovalTx
+        - ApprovalForAllTx
       abis:
         - name: Abyssmal
           file: ./abis/Abyssmal.json
       eventHandlers:
         - event: Approval(indexed address,indexed address,indexed uint256)
-          handler: approval
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalsForAll
+        - event: MintCostUpdated(uint256,uint256)
+          handler: handleMintCostUpdated
       file: ./src/index.ts
+
+
