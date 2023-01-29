@@ -41,7 +41,7 @@ jobs:
         run: yarn codegen
 
       - name: Run build
-        run: yarn build:mainnet
+        run: yarn build:local
 
       - name: Run tests
         run: yarn test
