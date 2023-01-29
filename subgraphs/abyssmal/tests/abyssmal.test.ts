@@ -37,8 +37,8 @@ import {
 describe("Abyssmal", () => {
   describe("Approval", () => {
     const createMockApprovalEvent = (
-      owner = "0x60bb1e2aa1c9acafb4d34f71585d7e959f387769",
-      approved = "0x0C6F86b338417B3b7FCB9B344DECC51d072919c9",
+      owner: string = "0x60bb1e2aa1c9acafb4d34f71585d7e959f387769",
+      approved: string = "0x0C6F86b338417B3b7FCB9B344DECC51d072919c9",
       tokenId: i32 = 1333
     ): Approval => {
       const event = createApprovalEvent(owner, approved, tokenId, 1667474207);
@@ -54,9 +54,9 @@ describe("Abyssmal", () => {
 
   describe("ApprovalForAll", () => {
     const createMockApprovalForAllEvent = (
-      owner = "0x60bb1e2aa1c9acafb4d34f71585d7e959f387769",
-      operator = "0x0C6F86b338417B3b7FCB9B344DECC51d072919c9",
-      approved = true,
+      owner: string = "0x60bb1e2aa1c9acafb4d34f71585d7e959f387769",
+      operator: string = "0x0C6F86b338417B3b7FCB9B344DECC51d072919c9",
+      approved: boolean = true,
       timestamp: i32 = 1667474207
     ): ApprovalForAll => {
       return createApprovalForAllEvent(owner, operator, approved, timestamp);
@@ -87,7 +87,7 @@ describe("Abyssmal", () => {
 
   describe("Handle NFTMinted Tx", () => {
     const createMockNFTMintedEvent = (
-      mintedBy = "0x60bb1e2aa1c9acafb4d34f71585d7e959f387769",
+      mintedBy: string = "0x60bb1e2aa1c9acafb4d34f71585d7e959f387769",
       tokenId: i32 = 33,
       cost: i32 = 5000,
       timestamp: i32 = 1667474207
@@ -104,8 +104,8 @@ describe("Abyssmal", () => {
 
   describe("Handle Ownership Transfer Tx", () => {
     const createMockOwnershipTransferredEvent = (
-      previousOwner = "0x60bb1e2aa1c9acafb4d34f71585d7e959f387769",
-      newOwner = "0x0C6F86b338417B3b7FCB9B344DECC51d072919c9",
+      previousOwner: string = "0x60bb1e2aa1c9acafb4d34f71585d7e959f387769",
+      newOwner: string = "0x0C6F86b338417B3b7FCB9B344DECC51d072919c9",
       timestamp: i32 = 1667474207
     ): OwnershipTransferred => {
       return createOwnershipTransferredEvent(previousOwner, newOwner, timestamp);
@@ -120,8 +120,8 @@ describe("Abyssmal", () => {
 
   describe("Handle Transfer Tx", () => {
     const createMockTransferEvent = (
-      from = "0x60bb1e2aa1c9acafb4d34f71585d7e959f387769",
-      to = "0x0C6F86b338417B3b7FCB9B344DECC51d072919c9",
+      from: string = "0x60bb1e2aa1c9acafb4d34f71585d7e959f387769",
+      to: string = "0x0C6F86b338417B3b7FCB9B344DECC51d072919c9",
       tokenId: i32 = 234,
       timestamp: i32 = 1667474207
     ): Transfer => {
