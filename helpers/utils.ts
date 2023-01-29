@@ -1,4 +1,4 @@
-import { BigDecimal, BigInt } from "@graphprotocol/graph-ts";
+import { BigDecimal, BigInt, Bytes } from "@graphprotocol/graph-ts";
 
 /**
  * @param amount amount in BigInt
@@ -22,3 +22,7 @@ export function parseEther(amount: i32, decimals: u8 = 18): BigInt {
   const adjuster = BigInt.fromI32(10).pow(decimals);
   return BigInt.fromI32(amount).times(adjuster);
 }
+
+export const createId = (hash: Bytes, logIndex: BigInt): string => {
+  return `${hash}-${logIndex.toString()}`;
+};

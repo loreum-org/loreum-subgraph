@@ -9,7 +9,7 @@ type ApprovalTx @entity {
   approved: String!
 
   " NFT tokenId "
-  tokenId: Int!
+  tokenId: BigInt!
 }
 
 type ApprovalForAllTx @entity {
@@ -30,9 +30,48 @@ type MintCostUpdatedTx @entity {
   " { transaction hash - logIndex } "
   id: ID!
 
-  " old mint cost"
+  " old mint cost "
   oldMintCost: BigInt!
 
-  " new mint cost"
+  " new mint cost "
   newMintCost: BigInt!
+}
+
+type NFTMintedTx @entity {
+  " { transaction hash - logIndex } "
+  id: ID!
+
+  " address of minter "
+  mintedBy: String!
+
+  " tokenId "
+  tokenId: BigInt!
+
+  " cost of mint "
+  cost: BigInt!
+}
+
+type OwnershipTransferredTx @entity {
+  " { transaction hash - logIndex } "
+  id: ID!
+
+  " previous owner address "
+  previousOwner: String!
+
+  " new owner address "
+  newOwner: String!
+}
+
+type TransferTx @entity {
+  " { transaction hash - logIndex } "
+  id: ID!
+
+  " address of minter "
+  from: String!
+
+  " tokenId "
+  to: String!
+
+  " tokenId "
+  tokenId: BigInt!
 }

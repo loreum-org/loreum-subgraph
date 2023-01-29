@@ -15,6 +15,10 @@ dataSources:
       entities:
         - ApprovalTx
         - ApprovalForAllTx
+        - MintCostUpdatedTx
+        - NFTMintedTx
+        - OwnershipTransferredTx
+        - TransferTx
       abis:
         - name: Abyssmal
           file: ./abis/Abyssmal.json
@@ -25,6 +29,10 @@ dataSources:
           handler: handleApprovalsForAll
         - event: MintCostUpdated(uint256,uint256)
           handler: handleMintCostUpdated
+        - event: NFTMinted(indexed address,uint16,uint256)
+          handler: handleNFTMinted
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
       file: ./src/index.ts
-
-
