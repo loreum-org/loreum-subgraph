@@ -25,7 +25,7 @@ dataSources:
         - event: Approval(indexed address,indexed address,indexed uint256)
           handler: handleApproval
         - event: ApprovalForAll(indexed address,indexed address,bool)
-          handler: handleApprovalsForAll
+          handler: handleApprovalForAll
         - event: MintCostUpdated(uint256,uint256)
           handler: handleMintCostUpdated
         - event: NFTMinted(indexed address,indexed uint16,uint256)
