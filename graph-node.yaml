@@ -5,11 +5,13 @@ services:
     image: ipfs/go-ipfs:v0.4.9
     ports:
       - '5001:5001'
+    platform: "linux/amd64"
 
   evm:
-    image: ethereumoptimism/hardhat-node
+    image: loreum/hardhat
     ports:
       - '8545:8545'
+    platform: "linux/amd64"
 
   postgres:
     image: postgres
@@ -39,6 +41,7 @@ services:
       postgres_pass: let-me-in
       postgres_db: graph-node
       ipfs: 'http://ipfs:5001'
-      ethereum: 'hardhat:http://evm:8545'
+      ethereum: 'localhost:http://evm:8545'
       RUST_LOG: error
       ETHEREUM_POLLING_INTERVAL: 1000
+    platform: "linux/amd64"

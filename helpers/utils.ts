@@ -24,5 +24,5 @@ export function parseEther(amount: i32, decimals: u8 = 18): BigInt {
 }
 
 export const createId = (hash: Bytes, logIndex: BigInt): string => {
-  return `${hash}-${logIndex.toString()}`;
+  return `${hash.toHexString()}-${logIndex.toString()}`;
 };

@@ -4,7 +4,6 @@ schema:
 dataSources:
   - kind: ethereum
     name: Abyssmal
-    network: hardhat
     source:
       abi: Abyssmal
       address: "0x5FbDB2315678afecb367f032d93F642f64180aa3"
@@ -29,10 +28,11 @@ dataSources:
           handler: handleApprovalsForAll
         - event: MintCostUpdated(uint256,uint256)
           handler: handleMintCostUpdated
-        - event: NFTMinted(indexed address,uint16,uint256)
+        - event: NFTMinted(indexed address,indexed uint16,uint256)
           handler: handleNFTMinted
         - event: OwnershipTransferred(indexed address,indexed address)
           handler: handleOwnershipTransferred
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
       file: ./src/index.ts
+    network: localhost

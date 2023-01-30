@@ -22,6 +22,9 @@ const addressEventParam = (key: string, value: string): ethereum.EventParam =>
 const uintEventParam = (key: string, value: i32): ethereum.EventParam =>
   new ethereum.EventParam(key, ethereum.Value.fromUnsignedBigInt(BigInt.fromI32(value)));
 
+const uint64EventParam = (key: string, value: i64): ethereum.EventParam =>
+  new ethereum.EventParam(key, ethereum.Value.fromUnsignedBigInt(BigInt.fromI64(value)));
+
 export function createApprovalEvent(owner: string, approved: string, tokenId: i32, timestamp: i32): Approval {
   const mockEvent = newMockEvent();
   const approvalEvent = new Approval(
@@ -83,7 +86,7 @@ export function createMintCostUpdatedEvent(oldMintCost: i32, newMintCost: i32, t
   return mintCostUpdatedEvent;
 }
 
-export function createNFTMintedEvent(mintedBy: string, tokenId: i32, cost: i32, timestamp: i32): NFTMinted {
+export function createNFTMintedEvent(mintedBy: string, tokenId: i32, cost: i64, timestamp: i32): NFTMinted {
   const mockEvent = newMockEvent();
   const nftMintedEvent = new NFTMinted(
     mockEvent.address,
@@ -98,7 +101,7 @@ export function createNFTMintedEvent(mintedBy: string, tokenId: i32, cost: i32, 
   nftMintedEvent.block.timestamp = BigInt.fromI32(timestamp);
   nftMintedEvent.parameters.push(addressEventParam("mintedBy", mintedBy));
   nftMintedEvent.parameters.push(uintEventParam("tokenId", tokenId));
-  nftMintedEvent.parameters.push(uintEventParam("cost", cost));
+  nftMintedEvent.parameters.push(uint64EventParam("cost", cost));
   return nftMintedEvent;
 }
 

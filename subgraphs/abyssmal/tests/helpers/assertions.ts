@@ -15,7 +15,7 @@ import {
   Transfer,
 } from "../../generated/Abyssmal/Abyssmal";
 import { assert } from "matchstick-as";
-import { BigInt } from "@graphprotocol/graph-ts";
+import { BigInt, log } from "@graphprotocol/graph-ts";
 import { createId } from "../../../../helpers/utils";
 
 export const expectApprovalTxAdded = (event: Approval): void => {
@@ -52,9 +52,12 @@ export const expectNFTMintedTxAdded = (event: NFTMinted): void => {
   const nftMintedTx = NFTMintedTx.load(id);
   assert.assertNotNull(nftMintedTx);
   if (!nftMintedTx) return;
+  // log.info("mintedBy in Entity: {}, {}}", [event.params.mintedBy.toHexString(), nftMintedTx.mintedBy]);
+  // log.info("tokenId in Entity: {}, {}}", [BigInt.fromI32(event.params.tokenId).toString(), nftMintedTx.tokenId.toString()]);
+  // log.info("tokenId in Entity: {}, {}}", [event.params.cost.toString(), nftMintedTx.cost.toString()]);
   assert.stringEquals(event.params.mintedBy.toHexString(), nftMintedTx.mintedBy);
   assert.bigIntEquals(BigInt.fromI32(event.params.tokenId), nftMintedTx.tokenId);
-  assert.bigIntEquals(event.params.cost, nftMintedTx.cost);
+  assert.assertTrue(event.params.cost == nftMintedTx.cost);
 };
 
 export const expectOwnershipTransferredAdded = (event: OwnershipTransferred): void => {

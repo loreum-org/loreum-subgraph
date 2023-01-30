@@ -1,4 +1,5 @@
 import { describe, test } from "matchstick-as/assembly/index";
+import { BigInt } from "@graphprotocol/graph-ts";
 import {
   handleApproval,
   handleApprovalForAll,
@@ -89,7 +90,7 @@ describe("Abyssmal", () => {
     const createMockNFTMintedEvent = (
       mintedBy: string = "0x60bb1e2aa1c9acafb4d34f71585d7e959f387769",
       tokenId: i32 = 33,
-      cost: i32 = 5000,
+      cost: i64 = BigInt.fromI32(10).pow(18).toI64(),
       timestamp: i32 = 1667474207
     ): NFTMinted => {
       return createNFTMintedEvent(mintedBy, tokenId, cost, timestamp);
