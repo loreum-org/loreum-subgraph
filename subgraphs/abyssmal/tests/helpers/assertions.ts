@@ -15,7 +15,7 @@ import {
   Transfer,
 } from "../../generated/Abyssmal/Abyssmal";
 import { assert } from "matchstick-as";
-import { BigInt, log } from "@graphprotocol/graph-ts";
+import { BigInt } from "@graphprotocol/graph-ts";
 import { createId } from "../../../../helpers/utils";
 
 export const expectApprovalTxAdded = (event: Approval): void => {
