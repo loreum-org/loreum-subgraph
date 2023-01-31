@@ -3,10 +3,10 @@ type ApprovalTx @entity {
   id: ID!
 
   " Address of Owner "
-  owner: String!
+  owner: Bytes!
 
   " Approved address "
-  approved: String!
+  approved: Bytes!
 
   " NFT tokenId "
   tokenId: BigInt!
@@ -20,10 +20,10 @@ type ApprovalForAllTx @entity {
   id: ID!
 
   " Address of Owner "
-  owner: String!
+  owner: Bytes!
 
   " Operator address "
-  operator: String!
+  operator: Bytes!
 
   " Is Operator Approved for all "
   approved: Boolean!
@@ -51,9 +51,9 @@ type NFTMintedTx @entity {
   id: ID!
 
   " address of minter "
-  mintedBy: String!
+  mintedBy: Bytes!
 
-  " tokenId "
+  " NFT tokenId "
   tokenId: BigInt!
 
   " cost of mint "
@@ -68,10 +68,10 @@ type OwnershipTransferredTx @entity {
   id: ID!
 
   " previous owner address "
-  previousOwner: String!
+  previousOwner: Bytes!
 
   " new owner address "
-  newOwner: String!
+  newOwner: Bytes!
 
   " timestamp "
   timestamp: BigInt!
@@ -81,11 +81,11 @@ type TransferTx @entity {
   " { transaction hash - logIndex } "
   id: ID!
 
-  " address of minter "
-  from: String!
+  " address of sender "
+  from: Bytes!
 
-  " tokenId "
-  to: String!
+  " address of recipient "
+  to: Bytes!
 
   " tokenId "
   tokenId: BigInt!

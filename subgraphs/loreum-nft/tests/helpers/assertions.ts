@@ -23,8 +23,8 @@ export const expectApprovalTxAdded = (event: Approval): void => {
   const approvalTx = ApprovalTx.load(id);
   assert.assertNotNull(approvalTx);
   if (!approvalTx) return;
-  assert.stringEquals(event.params.owner.toHexString(), approvalTx.owner);
-  assert.stringEquals(event.params.approved.toHexString(), approvalTx.approved);
+  assert.bytesEquals(event.params.owner, approvalTx.owner);
+  assert.bytesEquals(event.params.approved, approvalTx.approved);
   assert.bigIntEquals(event.params.tokenId, approvalTx.tokenId);
   assert.assertNotNull(approvalTx.timestamp.toI32());
 };
@@ -34,8 +34,8 @@ export const expectApprovalForAllTxAdded = (event: ApprovalForAll): void => {
   const approvalForAllTx = ApprovalForAllTx.load(id);
   assert.assertNotNull(approvalForAllTx);
   if (!approvalForAllTx) return;
-  assert.stringEquals(event.params.owner.toHexString(), approvalForAllTx.owner);
-  assert.stringEquals(event.params.operator.toHexString(), approvalForAllTx.operator);
+  assert.bytesEquals(event.params.owner, approvalForAllTx.owner);
+  assert.bytesEquals(event.params.operator, approvalForAllTx.operator);
   assert.booleanEquals(event.params.approved, approvalForAllTx.approved);
   assert.assertNotNull(approvalForAllTx.timestamp.toI32());
 };
@@ -55,7 +55,7 @@ export const expectNFTMintedTxAdded = (event: NFTMinted): void => {
   const nftMintedTx = NFTMintedTx.load(id);
   assert.assertNotNull(nftMintedTx);
   if (!nftMintedTx) return;
-  assert.stringEquals(event.params.mintedBy.toHexString(), nftMintedTx.mintedBy);
+  assert.bytesEquals(event.params.mintedBy, nftMintedTx.mintedBy);
   assert.bigIntEquals(BigInt.fromI32(event.params.tokenId), nftMintedTx.tokenId);
   assert.assertTrue(event.params.cost == nftMintedTx.cost);
   assert.assertNotNull(nftMintedTx.timestamp.toI32());
@@ -66,8 +66,8 @@ export const expectOwnershipTransferredAdded = (event: OwnershipTransferred): vo
   const ownershipTransferredTx = OwnershipTransferredTx.load(id);
   assert.assertNotNull(ownershipTransferredTx);
   if (!ownershipTransferredTx) return;
-  assert.stringEquals(event.params.previousOwner.toHexString(), ownershipTransferredTx.previousOwner);
-  assert.stringEquals(event.params.newOwner.toHexString(), ownershipTransferredTx.newOwner);
+  assert.bytesEquals(event.params.previousOwner, ownershipTransferredTx.previousOwner);
+  assert.bytesEquals(event.params.newOwner, ownershipTransferredTx.newOwner);
   assert.assertNotNull(ownershipTransferredTx.timestamp.toI32());
 };
 
@@ -76,7 +76,7 @@ export const expectTransferAdded = (event: Transfer): void => {
   const transferTx = TransferTx.load(id);
   assert.assertNotNull(transferTx);
   if (!transferTx) return;
-  assert.stringEquals(event.params.from.toHexString(), transferTx.from);
-  assert.stringEquals(event.params.to.toHexString(), transferTx.to);
+  assert.bytesEquals(event.params.from, transferTx.from);
+  assert.bytesEquals(event.params.to, transferTx.to);
   assert.assertNotNull(transferTx.timestamp.toI32());
 };
