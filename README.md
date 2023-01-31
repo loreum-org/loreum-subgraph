@@ -8,10 +8,10 @@ You will need to have a local docker engine running.
 
 Start the docker stack.
 ```shell
-# got intel machines
+# for intel machines
 yarn intel
 # for macs
-yarn m1
+yarn mac
 ```
 NOTE: You should see blocks ticking on local evm
 

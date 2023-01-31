@@ -10,7 +10,7 @@
     "subgraphs/**/*"
   ],
   "scripts": {
-    "m1": "docker-compose --file m1.yaml up --build",
+    "mac": "docker-compose --file m1.yaml up --build",
     "intel": "docker-compose --file intel.yaml up --build",
     "codegen": "lerna run codegen",
     "build:local": "lerna run build:local",
