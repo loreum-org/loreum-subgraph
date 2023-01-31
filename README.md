@@ -13,7 +13,7 @@ yarn intel
 # for macs
 yarn m1
 ```
-NOTE: you should the blocks ticking on local evm
+NOTE: You should see blocks ticking on local evm
 
 *terminal 2*
 
