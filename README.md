@@ -26,7 +26,7 @@ yarn cycle
 
 *terminal 3*
 
-Compile and deploy the subgrpah
+Compile and deploy the subgraph
 ```shell
 cd subgraphs/loreum-nft
 yarn test
@@ -36,5 +36,5 @@ yarn create:local
 yarn deploy:local
 ```
 
-NOTE: If you evm isn't ticking or functionality is off, you may need to prune your docker images:
+NOTE: If your evm isn't ticking or functionality is off, you may need to prune your docker images:
 `docker system prune --volumes`

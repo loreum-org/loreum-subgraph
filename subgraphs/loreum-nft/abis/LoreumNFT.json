@@ -12,6 +12,21 @@
         "type": "string"
       },
       {
+        "internalType": "string",
+        "name": "tokenUri_",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "mintCost_",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint96",
+        "name": "royaltyFraction_",
+        "type": "uint96"
+      },
+      {
         "internalType": "uint16",
         "name": "maxSupply_",
         "type": "uint16"
@@ -27,7 +42,7 @@
         "type": "address"
       }
     ],
-    "stateMutability": "payable",
+    "stateMutability": "nonpayable",
     "type": "constructor"
   },
   {
@@ -558,7 +573,7 @@
         "type": "string"
       }
     ],
-    "stateMutability": "pure",
+    "stateMutability": "view",
     "type": "function"
   },
   {
