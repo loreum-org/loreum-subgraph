@@ -15,7 +15,7 @@ import {
   Transfer,
 } from "../../generated/Abyssmal/Abyssmal";
 import { assert } from "matchstick-as";
-import { BigInt } from "@graphprotocol/graph-ts";
+import { BigInt, log } from "@graphprotocol/graph-ts";
 import { createId } from "../../../../helpers/utils";
 
 export const expectApprovalTxAdded = (event: Approval): void => {
@@ -26,6 +26,7 @@ export const expectApprovalTxAdded = (event: Approval): void => {
   assert.stringEquals(event.params.owner.toHexString(), approvalTx.owner);
   assert.stringEquals(event.params.approved.toHexString(), approvalTx.approved);
   assert.bigIntEquals(event.params.tokenId, approvalTx.tokenId);
+  assert.assertNotNull(approvalTx.timestamp.toI32());
 };
 
 export const expectApprovalForAllTxAdded = (event: ApprovalForAll): void => {
@@ -36,6 +37,7 @@ export const expectApprovalForAllTxAdded = (event: ApprovalForAll): void => {
   assert.stringEquals(event.params.owner.toHexString(), approvalForAllTx.owner);
   assert.stringEquals(event.params.operator.toHexString(), approvalForAllTx.operator);
   assert.booleanEquals(event.params.approved, approvalForAllTx.approved);
+  assert.assertNotNull(approvalForAllTx.timestamp.toI32());
 };
 
 export const expectMintCostTxAdded = (event: MintCostUpdated): void => {
@@ -45,6 +47,7 @@ export const expectMintCostTxAdded = (event: MintCostUpdated): void => {
   if (!mintCostUpdatedTx) return;
   assert.bigIntEquals(event.params.oldMintCost, mintCostUpdatedTx.oldMintCost);
   assert.bigIntEquals(event.params.newMintCost, mintCostUpdatedTx.newMintCost);
+  assert.assertNotNull(mintCostUpdatedTx.timestamp.toI32());
 };
 
 export const expectNFTMintedTxAdded = (event: NFTMinted): void => {
@@ -52,12 +55,10 @@ export const expectNFTMintedTxAdded = (event: NFTMinted): void => {
   const nftMintedTx = NFTMintedTx.load(id);
   assert.assertNotNull(nftMintedTx);
   if (!nftMintedTx) return;
-  // log.info("mintedBy in Entity: {}, {}}", [event.params.mintedBy.toHexString(), nftMintedTx.mintedBy]);
-  // log.info("tokenId in Entity: {}, {}}", [BigInt.fromI32(event.params.tokenId).toString(), nftMintedTx.tokenId.toString()]);
-  // log.info("tokenId in Entity: {}, {}}", [event.params.cost.toString(), nftMintedTx.cost.toString()]);
   assert.stringEquals(event.params.mintedBy.toHexString(), nftMintedTx.mintedBy);
   assert.bigIntEquals(BigInt.fromI32(event.params.tokenId), nftMintedTx.tokenId);
   assert.assertTrue(event.params.cost == nftMintedTx.cost);
+  assert.assertNotNull(nftMintedTx.timestamp.toI32());
 };
 
 export const expectOwnershipTransferredAdded = (event: OwnershipTransferred): void => {
@@ -67,6 +68,7 @@ export const expectOwnershipTransferredAdded = (event: OwnershipTransferred): vo
   if (!ownershipTransferredTx) return;
   assert.stringEquals(event.params.previousOwner.toHexString(), ownershipTransferredTx.previousOwner);
   assert.stringEquals(event.params.newOwner.toHexString(), ownershipTransferredTx.newOwner);
+  assert.assertNotNull(ownershipTransferredTx.timestamp.toI32());
 };
 
 export const expectTransferAdded = (event: Transfer): void => {
@@ -76,4 +78,5 @@ export const expectTransferAdded = (event: Transfer): void => {
   if (!transferTx) return;
   assert.stringEquals(event.params.from.toHexString(), transferTx.from);
   assert.stringEquals(event.params.to.toHexString(), transferTx.to);
+  assert.assertNotNull(transferTx.timestamp.toI32());
 };

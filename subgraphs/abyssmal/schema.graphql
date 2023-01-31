@@ -10,6 +10,9 @@ type ApprovalTx @entity {
 
   " NFT tokenId "
   tokenId: BigInt!
+
+  " timestamp "
+  timestamp: BigInt!
 }
 
 type ApprovalForAllTx @entity {
@@ -24,6 +27,9 @@ type ApprovalForAllTx @entity {
 
   " Is Operator Approved for all "
   approved: Boolean!
+
+  " timestamp "
+  timestamp: BigInt!
 }
 
 type MintCostUpdatedTx @entity {
@@ -35,6 +41,9 @@ type MintCostUpdatedTx @entity {
 
   " new mint cost "
   newMintCost: BigInt!
+
+  " timestamp "
+  timestamp: BigInt!
 }
 
 type NFTMintedTx @entity {
@@ -49,6 +58,9 @@ type NFTMintedTx @entity {
 
   " cost of mint "
   cost: BigInt!
+
+  " timestamp "
+  timestamp: BigInt!
 }
 
 type OwnershipTransferredTx @entity {
@@ -60,6 +72,9 @@ type OwnershipTransferredTx @entity {
 
   " new owner address "
   newOwner: String!
+
+  " timestamp "
+  timestamp: BigInt!
 }
 
 type TransferTx @entity {
@@ -74,4 +89,7 @@ type TransferTx @entity {
 
   " tokenId "
   tokenId: BigInt!
+
+  " timestamp "
+  timestamp: BigInt!
 }
