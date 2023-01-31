@@ -1,0 +1,23 @@
+{
+  "name": "loreum-nft",
+  "description": "Loreum NFT Subgraph",
+  "version": "1.0.0",
+  "repository": "git@github.com:looksrare/subgraphs.git",
+  "author": "Loreum",
+  "license": "MIT",
+  "scripts": {
+    "start": "yarn codegen && yarn build:local && yarn remove:local && yarn create:local && yarn deploy:local",
+    "codegen": "graph codegen",
+    "build:local": "graph build subgraph.yaml --network localhost",
+    "create:local": "graph create --node http://localhost:8020/ loreum-nft --network localhost",
+    "remove:local": "graph remove --node http://localhost:8020/ loreum-nft --network localhost",
+    "deploy:local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 loreum-nft --version-label v0.0.1 --network localhost",
+    "build:goerli": "graph build subgraph.yaml --network goerli",
+    "build:mainnet": "graph build subgraph.yaml --network mainnet",
+    "deploy:goerli": "graph deploy --product hosted-service --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ xhad/loreum-nft subgraph.yaml --network goerli",
+    "deploy:mainnet": "graph deploy --product hosted-service --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ looksrare/aggregator subgraph.yaml --network mainnet",
+    "deploy:studio": "graph codegen subgraph.yaml && graph build subgraph.yaml && graph deploy --studio loreum-nft --network mainnet",
+    "test": "graph test -r",
+    "test:lerna": "graph codegen subgraph.yaml && graph build subgraph.yaml && graph test -r"
+  }
+}
