@@ -12,4 +12,4 @@ export const ONE_ETHER_IN_WEI = BigInt.fromI32(10).pow(18);
 export const ONE_DAY_BI = BigInt.fromI32(86400);
 
 // TODO: Update it with the real address
-export const ABYSSMAL_CONTRACT = Address.fromString("0x0000000000000000000000000000000000069420");
+export const LOREUM_NFT_CONTRACT = Address.fromString("0x0000000000000000000000000000000000069420");

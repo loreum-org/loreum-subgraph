@@ -1,12 +1,40 @@
-## Loreum Subgraph
+## Loreum Subgraphs
 
-1. Start the docker containers
-`docker-compose --file graph-node.yaml up --build`
+You will need to have a local docker engine running. 
 
-2. Deploy the nft collection contracts
+1. Open three terminals:
 
-3. Update the contract addresses in the schema and networks.json
+*terminal 1*
 
-4. Create subgraph
+Start the docker stack.
+```shell
+# got intel machines
+yarn intel
+# for macs
+yarn m1
+```
+NOTE: you should the blocks ticking on local evm
 
-5. Deploy subgraph
+*terminal 2*
+
+Compile and deploy the contracts in loreum-org/loreum-nft
+```shell
+yarn compile
+yarn deploy:local
+yarn cycle
+```
+
+*terminal 3*
+
+Compile and deploy the subgrpah
+```shell
+cd subgraphs/loreum-nft
+yarn test
+yarn codegen
+yarn build:local
+yarn create:local
+yarn deploy:local
+```
+
+NOTE: If you evm isn't ticking or functionality is off, you may need to prune your docker images:
+`docker system prune --volumes`

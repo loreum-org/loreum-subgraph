@@ -8,7 +8,7 @@ import {
   NFTMinted,
   OwnershipTransferred,
   Transfer,
-} from "../../generated/Abyssmal/Abyssmal";
+} from "../../generated/LoreumNFT/LoreumNFT";
 
 // const stringEventParam = (key: string, value: string): ethereum.EventParam =>
 //   new ethereum.EventParam(key, ethereum.Value.fromString(value));

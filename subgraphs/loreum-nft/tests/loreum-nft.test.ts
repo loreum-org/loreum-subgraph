@@ -16,7 +16,7 @@ import {
   NFTMinted,
   OwnershipTransferred,
   Transfer,
-} from "../generated/Abyssmal/Abyssmal";
+} from "../generated/LoreumNFT/LoreumNFT";
 
 import {
   createApprovalEvent,
@@ -35,7 +35,7 @@ import {
   expectTransferAdded,
 } from "./helpers/assertions";
 
-describe("Abyssmal", () => {
+describe("LoreumNFT", () => {
   describe("Approval", () => {
     const createMockApprovalEvent = (
       owner: string = "0x60bb1e2aa1c9acafb4d34f71585d7e959f387769",

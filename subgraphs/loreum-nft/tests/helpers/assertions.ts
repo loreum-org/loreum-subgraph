@@ -13,7 +13,7 @@ import {
   NFTMinted,
   OwnershipTransferred,
   Transfer,
-} from "../../generated/Abyssmal/Abyssmal";
+} from "../../generated/LoreumNFT/LoreumNFT";
 import { assert } from "matchstick-as";
 import { BigInt } from "@graphprotocol/graph-ts";
 import { createId } from "../../../../helpers/utils";

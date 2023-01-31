@@ -3,9 +3,9 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
-    name: Abyssmal
+    name: LoreumNFT
     source:
-      abi: Abyssmal
+      abi: LoreumNFT
       address: "0x5FbDB2315678afecb367f032d93F642f64180aa3"
     mapping:
       kind: ethereum/events
@@ -19,8 +19,8 @@ dataSources:
         - OwnershipTransferredTx
         - TransferTx
       abis:
-        - name: Abyssmal
-          file: ./abis/Abyssmal.json
+        - name: LoreumNFT
+          file: ./abis/LoreumNFT.json
       eventHandlers:
         - event: Approval(indexed address,indexed address,indexed uint256)
           handler: handleApproval
