@@ -29,9 +29,9 @@ yarn cycle
 Compile and deploy the subgraph
 ```shell
 cd subgraphs/loreum-nft
-yarn test
 yarn codegen
 yarn build:local
+yarn test
 yarn create:local
 yarn deploy:local
 ```
