@@ -7,7 +7,7 @@ services:
       - '5001:5001'
 
   evm:
-    image: loreum/hardhat
+    image: loreum/nft
     ports:
       - '8545:8545'
 
