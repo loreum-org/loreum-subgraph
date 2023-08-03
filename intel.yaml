@@ -42,3 +42,4 @@ services:
       ethereum: 'localhost:http://evm:8545'
       RUST_LOG: error
       ETHEREUM_POLLING_INTERVAL: 1000
+      GRAPH_GRAPHQL_MAX_COMPLEXITY: 1000000

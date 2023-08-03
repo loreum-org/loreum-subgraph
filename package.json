@@ -1,10 +1,10 @@
 {
   "name": "subgraph",
-  "description": "Loreum Subgraph Indexers",
+  "description": "Seahsell Subgraphs",
   "version": "1.0.0",
   "private": true,
-  "repository": "git@github.com:loreum-org/subgraph.git",
-  "author": "Loreum",
+  "repository": "git@github.com:seashell-org/subgraph.git",
+  "author": "Seashell Team",
   "license": "MIT",
   "workspaces": [
     "subgraphs/**/*"

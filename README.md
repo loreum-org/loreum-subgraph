@@ -1,4 +1,4 @@
-## Loreum Subgraphs
+## Seashell Subgraphs
 
 You will need to have a local docker engine running. 
 
@@ -17,7 +17,7 @@ NOTE: You should see blocks ticking on local evm
 
 *terminal 2*
 
-Compile and deploy the contracts in loreum-org/loreum-nft
+Deploy Contracts Locally
 ```shell
 yarn compile
 yarn deploy:local

@@ -6,7 +6,7 @@ import {
   handleMintCostUpdated,
   handleNFTMinted,
   handleOwnershipTransferred,
-  handleTransfer,
+  handleTransfer
 } from "../src/index";
 
 import {
@@ -15,7 +15,7 @@ import {
   MintCostUpdated,
   NFTMinted,
   OwnershipTransferred,
-  Transfer,
+  Transfer
 } from "../generated/LoreumNFT/LoreumNFT";
 
 import {
@@ -24,7 +24,7 @@ import {
   createMintCostUpdatedEvent,
   createNFTMintedEvent,
   createOwnershipTransferredEvent,
-  createTransferEvent,
+  createTransferEvent
 } from "./helpers/utils";
 import {
   expectApprovalTxAdded,
@@ -32,7 +32,7 @@ import {
   expectMintCostTxAdded,
   expectNFTMintedTxAdded,
   expectOwnershipTransferredAdded,
-  expectTransferAdded,
+  expectTransferAdded
 } from "./helpers/assertions";
 
 describe("LoreumNFT", () => {
@@ -90,7 +90,9 @@ describe("LoreumNFT", () => {
     const createMockNFTMintedEvent = (
       mintedBy: string = "0x60bb1e2aa1c9acafb4d34f71585d7e959f387769",
       tokenId: i32 = 33,
-      cost: i64 = BigInt.fromI32(10).pow(18).toI64(),
+      cost: i64 = BigInt.fromI32(10)
+        .pow(18)
+        .toI64(),
       timestamp: i32 = 1667474207
     ): NFTMinted => {
       return createNFTMintedEvent(mintedBy, tokenId, cost, timestamp);

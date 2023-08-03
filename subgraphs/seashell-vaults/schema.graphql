@@ -1,0 +1,115 @@
+type TransferTx @entity {
+  " { transaction hash - logIndex } "
+  id: ID!
+
+  "address of contract"
+  contract: Bytes!
+  
+  " address of sender "
+  from: Bytes!
+
+  " address of recipient "
+  to: Bytes!
+
+  " tokenId "
+  value: BigInt!
+
+  " timestamp "
+  timestamp: BigInt!
+}
+
+
+# type ApprovalTx @entity {
+#   " { transaction hash - logIndex } "
+#   id: ID!
+#   "Address of Owner "
+#   owner: Bytes!
+
+#   "Approved address"
+#   approved: Bytes!
+
+#   "NFT tokenId"
+#   tokenId: BigInt!
+
+#   "timestamp"
+#   timestamp: BigInt!
+# }
+
+# type ApprovalForAllTx @entity {
+#   " { transaction hash - logIndex } "
+#   id: ID!
+
+#   " Address of Owner "
+#   owner: Bytes!
+
+#   " Operator address "
+#   operator: Bytes!
+
+#   " Is Operator Approved for all "
+#   approved: Boolean!
+
+#   " timestamp "
+#   timestamp: BigInt!
+# }
+
+# type MintCostUpdatedTx @entity {
+#   " { transaction hash - logIndex } "
+#   id: ID!
+
+#   " old mint cost "
+#   oldMintCost: BigInt!
+
+#   " new mint cost "
+#   newMintCost: BigInt!
+
+#   " timestamp "
+#   timestamp: BigInt!
+# }
+
+# type NFTMintedTx @entity {
+#   " { transaction hash - logIndex } "
+#   id: ID!
+
+#   " address of minter "
+#   mintedBy: Bytes!
+
+#   " NFT tokenId "
+#   tokenId: BigInt!
+
+#   " cost of mint "
+#   cost: BigInt!
+
+#   " timestamp "
+#   timestamp: BigInt!
+# }
+
+# type OwnershipTransferredTx @entity {
+#   " { transaction hash - logIndex } "
+#   id: ID!
+
+#   " previous owner address "
+#   previousOwner: Bytes!
+
+#   " new owner address "
+#   newOwner: Bytes!
+
+#   " timestamp "
+#   timestamp: BigInt!
+# }
+
+# type TransferTx @entity {
+#   " { transaction hash - logIndex } "
+#   id: ID!
+
+#   " address of sender "
+#   from: Bytes!
+
+#   " address of recipient "
+#   to: Bytes!
+
+#   " tokenId "
+#   tokenId: BigInt!
+
+#   " timestamp "
+#   timestamp: BigInt!
+# }

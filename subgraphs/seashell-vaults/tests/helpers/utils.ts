@@ -7,7 +7,7 @@ import {
   MintCostUpdated,
   NFTMinted,
   OwnershipTransferred,
-  Transfer,
+  Transfer
 } from "../../generated/LoreumNFT/LoreumNFT";
 
 // const stringEventParam = (key: string, value: string): ethereum.EventParam =>

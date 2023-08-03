@@ -1,0 +1,84 @@
+specVersion: 0.0.4
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: GLPLeveragedVault
+    network: arbitrum-one
+    source:
+      abi: GLPLeveragedVault
+      address: "0xc18f39F25c9995c0bB51512E48Ca8D8EA505EcfC"
+      startBlock: 94396838
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - GLPLeveragedVaultTx
+      abis:
+        - name: GLPLeveragedVault
+          file: ./abis/GLPLeveragedVault.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/index.ts
+  - kind: ethereum/contract
+    name: GLPVault
+    network: arbitrum-one
+    source:
+      abi: GLPVault
+      address: "0x5BAC5eEfA13696Cf815388021235b215587263Ea"
+      startBlock: 66186223
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - TransferTx
+      abis:
+        - name: GLPVault
+          file: ./abis/GLPVault.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/index.ts
+  - kind: ethereum/contract
+    name: LendingPool
+    network: arbitrum-one
+    source:
+      abi: LendingPool
+      address: "0x699332b18605907C14d70463D47358783c91bf55"
+      startBlock: 94396792
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - TransferTx
+      abis:
+        - name: LendingPool
+          file: ./abis/LendingPool.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/index.ts
+  - kind: ethereum/contract
+    name: GLPLeverageStrategy
+    network: arbitrum-one
+    source:
+      abi: GLPLeverageStrategy
+      address: "0x8e10cac8e0801a476B0906ea32312a9f5cA572aC"
+      startBlock: 94396744
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - TransferTx
+      abis:
+        - name: GLPLeverageStrategy
+          file: ./abis/GLPVault.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/index.ts

@@ -2,16 +2,16 @@ version: '3'
 
 services:
   ipfs:
-    image: ipfs/go-ipfs:v0.4.9
+    image: ipfs/go-ipfs:v0.10.0
     ports:
       - '5001:5001'
     platform: "linux/amd64"
 
-  evm:
-    image: loreum/nft
-    ports:
-      - '8545:8545'
-    platform: "linux/amd64"
+  # evm:
+  #   image: loreum/nft
+  #   ports:
+  #     - '8545:8545'
+  #   platform: "linux/amd64"
 
   postgres:
     image: postgres
@@ -22,6 +22,8 @@ services:
       POSTGRES_USER: graph-node
       POSTGRES_PASSWORD: let-me-in
       POSTGRES_DB: graph-node
+      LANGUAGE: 'C.UTF-8'
+      POSTGRES_INITDB_ARGS: "-E UTF8 --locale=C"
     
   graph-node:
     image: graphprotocol/graph-node
@@ -32,7 +34,7 @@ services:
       - '8030:8030'
       - '8040:8040'
     depends_on:
-      - evm
+      # - evm
       - ipfs
       - postgres
     environment:
@@ -41,7 +43,8 @@ services:
       postgres_pass: let-me-in
       postgres_db: graph-node
       ipfs: 'http://ipfs:5001'
-      ethereum: 'localhost:http://evm:8545'
+      ethereum: 'arbitrum-one:https://arb-mainnet.g.alchemy.com/v2/KEY'
       RUST_LOG: error
       ETHEREUM_POLLING_INTERVAL: 1000
+      ENABLE_GRAPHQL_VALIDATIONS: false
     platform: "linux/amd64"

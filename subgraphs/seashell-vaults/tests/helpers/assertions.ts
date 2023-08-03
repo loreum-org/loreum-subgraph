@@ -4,7 +4,7 @@ import {
   MintCostUpdatedTx,
   NFTMintedTx,
   OwnershipTransferredTx,
-  TransferTx,
+  TransferTx
 } from "../../generated/schema";
 import {
   Approval,
@@ -12,7 +12,7 @@ import {
   MintCostUpdated,
   NFTMinted,
   OwnershipTransferred,
-  Transfer,
+  Transfer
 } from "../../generated/LoreumNFT/LoreumNFT";
 import { assert } from "matchstick-as";
 import { BigInt } from "@graphprotocol/graph-ts";

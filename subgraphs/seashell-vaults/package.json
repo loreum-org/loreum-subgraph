@@ -1,0 +1,41 @@
+{
+  "name": "loreum-nft",
+  "description": "Loreum NFT Subgraph",
+  "version": "1.0.0",
+  "repository": "git@github.com:looksrare/subgraphs.git",
+  "author": "Loreum",
+  "license": "MIT",
+  "scripts": {
+    "start": "yarn codegen && yarn build:local && yarn remove:local && yarn create:local && yarn deploy:local",
+    "codegen": "graph codegen",
+    "build:local": "graph build subgraph.yaml --network arbitrum-one",
+    "create:local": "graph create --node http://localhost:8020/ seashell-vaults --network arbitrum-one",
+    "remove:local": "graph remove --node http://localhost:8020/ seashell-vaults --network arbitrum-one",
+    "deploy:local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 seashell-vaults --version-label v0.0.1 --network arbitrum-one",
+    "build:goerli": "graph build subgraph.yaml --network goerli",
+    "create:goerli": "graph create --node https://api.thegraph.com/deploy/ blackholes --network goerli",
+    "remove:goerli": "graph remove --node https://api.thegraph.com/deploy/ blackholes --network goerli",
+    "deploy:goerli": "graph deploy --product hosted-service --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ blackholes --version-label v0.0.1 subgraph.yaml --network goerli",
+    "build:mainnet": "graph build subgraph.yaml --network mainnet",
+    "create:mainnet": "graph create --node https://api.thegraph.com/deploy/ loreum/explorers --network mainnet",
+    "remove:mainnet": "graph remove --node https://api.thegraph.com/deploy/ loreum/explorers --network mainnet",
+    "deploy:mainnet": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ loreum/explorers --version-label v0.0.1 subgraph.yaml --network mainnet",
+    "deploy:studio": "graph codegen subgraph.yaml && graph build subgraph.yaml && graph deploy --studio loreum-nft --network mainnet",
+    "test": "graph test -r",
+    "test:lerna": "graph codegen subgraph.yaml && graph build subgraph.yaml && graph test -r",
+    "validate": "npx @graphql-inspector/cli validate schema.graphql"
+  },
+  "dependencies": {
+    "big-number": "^2.0.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-mocha": "^10.1.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "ethers": "^6.6.7",
+    "graphql-fetch": "^1.0.1",
+    "prettier": "^2.8.4"
+  }
+}
