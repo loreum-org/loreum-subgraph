@@ -31,17 +31,18 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 18.x
-          cache: "yarn"
+          node-version: 18
+          cache: "npm"
+          cache-dependency-path: ./package-lock.json
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm install --frozen-lockfile
 
       - name: Run codegen
-        run: yarn codegen
+        run: npm run codegen
 
       - name: Run build
-        run: yarn build:local
+        run: npm run build:local
 
       - name: Run tests
-        run: yarn test
+        run: npm test
