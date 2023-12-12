@@ -10,7 +10,7 @@ on:
 jobs:
   tests:
     name: Matchstick
-    runs-on: ubuntu-latest
+    runs-on: macos-13
     container: node:18
 
     services:
