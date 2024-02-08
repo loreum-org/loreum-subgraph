@@ -5,12 +5,12 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
-    name: Registry
+    name: MultiProxy
     network: sepolia
     source:
-      address: "0xd40D0c46Ced593579d13A1fCA9E96BFF5edA1f38"
-      abi: Registry
-      startBlock: 5239925
+      address: "0x1878abCC596bc0087c23E988e1aA2518fafc169E"
+      abi: MultiProxy
+      startBlock: 5246964
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -20,8 +20,8 @@ dataSources:
         - Initialized
         - OwnershipTransferred
       abis:
-        - name: Registry
-          file: ./abis/Registry.json
+        - name: MultiProxy
+          file: ./abis/MultiProxy.json
       eventHandlers:
         - event: ChamberDeployed(indexed address,indexed uint256,indexed address,address,address)
           handler: handleChamberDeployed
@@ -29,47 +29,4 @@ dataSources:
           handler: handleInitialized
         - event: OwnershipTransferred(indexed address,indexed address)
           handler: handleOwnershipTransferred
-      file: ./src/registry.ts
-templates:
-  - kind: ethereum
-    name: Chamber
-    network: sepolia
-    source:
-      abi: Chamber
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.7
-      language: wasm/assemblyscript
-      entities:
-        - ChangedGuard
-        - Demoted
-        - Initialized
-        - Promoted
-        - ProposalApproved
-        - ProposalCreated
-        - ProposalExecuted
-        - ReceivedEther
-        - ReceivedFallback
-      abis:
-        - name: Chamber
-          file: ./abis/Chamber.json
-      eventHandlers:
-        - event: ChangedGuard(indexed address)
-          handler: handleChangedGuard
-        - event: Demoted(address,uint256,uint256)
-          handler: handleDemoted
-        - event: Initialized(uint8)
-          handler: handleInitialized
-        - event: Promoted(address,uint256,uint256)
-          handler: handlePromoted
-        - event: ProposalApproved(uint256,uint256,uint256)
-          handler: handleProposalApproved
-        - event: ProposalCreated(uint256,address[],uint256[],bytes[],uint256[5],uint256)
-          handler: handleProposalCreated
-        - event: ProposalExecuted(uint256)
-          handler: handleProposalExecuted
-        - event: ReceivedEther(indexed address,uint256)
-          handler: handleReceivedEther
-        - event: ReceivedFallback(indexed address,uint256)
-          handler: handleReceivedFallback
-      file: ./src/registry.ts
+      file: ./src/multi-proxy.ts
