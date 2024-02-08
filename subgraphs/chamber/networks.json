@@ -1,7 +1,7 @@
 {
   "sepolia": {
     "MultiProxy": {
-      "address": "0x1878abCC596bc0087c23E988e1aA2518fafc169E",
+      "address": "0x4aBE0e218706430A437FBD091D4138F810A72A41",
       "startBlock": 5246964
     }
   }

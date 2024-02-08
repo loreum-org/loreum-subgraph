@@ -8,7 +8,7 @@ dataSources:
     name: MultiProxy
     network: sepolia
     source:
-      address: "0x1878abCC596bc0087c23E988e1aA2518fafc169E"
+      address: "0x4aBE0e218706430A437FBD091D4138F810A72A41"
       abi: MultiProxy
       startBlock: 5246964
     mapping:
@@ -29,4 +29,47 @@ dataSources:
           handler: handleInitialized
         - event: OwnershipTransferred(indexed address,indexed address)
           handler: handleOwnershipTransferred
+      file: ./src/multi-proxy.ts
+templates:
+  - kind: ethereum
+    name: Chamber
+    network: sepolia
+    source:
+      abi: Chamber
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ChangedGuard
+        - Demoted
+        - Initialized
+        - Promoted
+        - ProposalApproved
+        - ProposalCreated
+        - ProposalExecuted
+        - ReceivedEther
+        - ReceivedFallback
+      abis:
+        - name: Chamber
+          file: ./abis/Chamber.json
+      eventHandlers:
+        - event: ChangedGuard(indexed address)
+          handler: handleChangedGuard
+        - event: Demoted(address,uint256,uint256)
+          handler: handleDemoted
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: Promoted(address,uint256,uint256)
+          handler: handlePromoted
+        - event: ProposalApproved(uint256,uint256,uint256)
+          handler: handleProposalApproved
+        - event: ProposalCreated(uint256,address[],uint256[],bytes[],uint256[5],uint256)
+          handler: handleProposalCreated
+        - event: ProposalExecuted(uint256)
+          handler: handleProposalExecuted
+        - event: ReceivedEther(indexed address,uint256)
+          handler: handleReceivedEther
+        - event: ReceivedFallback(indexed address,uint256)
+          handler: handleReceivedFallback
       file: ./src/multi-proxy.ts
