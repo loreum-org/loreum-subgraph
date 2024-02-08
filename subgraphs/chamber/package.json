@@ -1,0 +1,22 @@
+{
+  "name": "chamber",
+  "description": "Chamber Subgraph",
+  "version": "1.0.0",
+  "repository": "git@github.com:looksrare/subgraphs.git",
+  "author": "Loreum",
+  "license": "MIT",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ registry-chamber",
+    "create-local": "graph create --node http://localhost:8020/ registry-chamber",
+    "remove-local": "graph remove --node http://localhost:8020/ registry-chamber",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 registry-chamber",
+    "test": "graph test"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.67.4",
+    "@graphprotocol/graph-ts": "0.32.0"
+  },
+  "devDependencies": { "matchstick-as": "0.5.0" }
+}
