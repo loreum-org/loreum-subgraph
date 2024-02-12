@@ -1,0 +1,84 @@
+type ChangedGuard @entity(immutable: true) {
+  id: Bytes!
+  guard: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Demoted @entity(immutable: true) {
+  id: Bytes!
+  demoter: Bytes! # address
+  amt: BigInt! # uint256
+  tokenId: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Initialized @entity(immutable: true) {
+  id: Bytes!
+  version: Int! # uint8
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Promoted @entity(immutable: true) {
+  id: Bytes!
+  promoter: Bytes! # address
+  amt: BigInt! # uint256
+  tokenId: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ProposalApproved @entity(immutable: true) {
+  id: Bytes!
+  proposalId: BigInt! # uint256
+  tokenId: BigInt! # uint256
+  approvals: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ProposalCreated @entity(immutable: true) {
+  id: Bytes!
+  proposalId: BigInt! # uint256
+  target: [Bytes!]! # address[]
+  value: [BigInt!]! # uint256[]
+  data: [Bytes!]! # bytes[]
+  voters: [BigInt!]! # uint256[5]
+  nonce: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ProposalExecuted @entity(immutable: true) {
+  id: Bytes!
+  proposalId: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ReceivedEther @entity(immutable: true) {
+  id: Bytes!
+  sender: Bytes! # address
+  value: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ReceivedFallback @entity(immutable: true) {
+  id: Bytes!
+  sender: Bytes! # address
+  value: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
