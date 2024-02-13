@@ -1,0 +1,32 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: registry
+    network: sepolia
+    source:
+      address: "0x3c4d3fFB1F05A029Da4Db4fD154F2cc2753c5173"
+      abi: registry
+      startBlock: 5281759
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ChamberDeployed
+        - Initialized
+        - OwnershipTransferred
+      abis:
+        - name: registry
+          file: ./abis/registry.json
+      eventHandlers:
+        - event: ChamberDeployed(indexed address,indexed uint256,indexed address,address,address)
+          handler: handleChamberDeployed
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+      file: ./src/registry.ts
