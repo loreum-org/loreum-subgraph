@@ -1,5 +1,5 @@
 type ChamberDeployed @entity(immutable: true) {
-  id: Bytes!
+  id: ID!
   chamber: Bytes! # address
   serial: BigInt! # uint256
   deployer: Bytes! # address
@@ -11,7 +11,7 @@ type ChamberDeployed @entity(immutable: true) {
 }
 
 type Initialized @entity(immutable: true) {
-  id: Bytes!
+  id: ID!
   version: Int! # uint8
   blockNumber: BigInt!
   blockTimestamp: BigInt!
@@ -19,7 +19,7 @@ type Initialized @entity(immutable: true) {
 }
 
 type OwnershipTransferred @entity(immutable: true) {
-  id: Bytes!
+  id: ID!
   previousOwner: Bytes! # address
   newOwner: Bytes! # address
   blockNumber: BigInt!
@@ -28,7 +28,7 @@ type OwnershipTransferred @entity(immutable: true) {
 }
 
 type ChangedGuard @entity(immutable: true) {
-  id: Bytes!
+  id: ID!
   guard: Bytes! # address
   blockNumber: BigInt!
   blockTimestamp: BigInt!
@@ -37,7 +37,7 @@ type ChangedGuard @entity(immutable: true) {
 }
 
 type Demoted @entity(immutable: true) {
-  id: Bytes!
+  id: ID!
   demoter: Bytes! # address
   amt: BigInt! # uint256
   tokenId: BigInt! # uint256
@@ -48,7 +48,7 @@ type Demoted @entity(immutable: true) {
 }
 
 type Promoted @entity(immutable: true) {
-  id: Bytes!
+  id: ID!
   promoter: Bytes! # address
   amt: BigInt! # uint256
   tokenId: BigInt! # uint256
@@ -59,7 +59,7 @@ type Promoted @entity(immutable: true) {
 }
 
 type ProposalApproved @entity(immutable: true) {
-  id: Bytes!
+  id: ID!
   proposalId: BigInt! # uint256
   tokenId: BigInt! # uint256
   approvals: BigInt! # uint256
@@ -70,7 +70,7 @@ type ProposalApproved @entity(immutable: true) {
 }
 
 type ProposalCreated @entity(immutable: true) {
-  id: Bytes!
+  id: ID!
   proposalId: BigInt! # uint256
   target: [Bytes!]! # address[]
   value: [BigInt!]! # uint256[]
@@ -84,7 +84,7 @@ type ProposalCreated @entity(immutable: true) {
 }
 
 type ProposalExecuted @entity(immutable: true) {
-  id: Bytes!
+  id: ID!
   proposalId: BigInt! # uint256
   blockNumber: BigInt!
   blockTimestamp: BigInt!
@@ -93,7 +93,7 @@ type ProposalExecuted @entity(immutable: true) {
 }
 
 type ReceivedEther @entity(immutable: true) {
-  id: Bytes!
+  id: ID!
   sender: Bytes! # address
   value: BigInt! # uint256
   blockNumber: BigInt!
@@ -103,7 +103,7 @@ type ReceivedEther @entity(immutable: true) {
 }
 
 type ReceivedFallback @entity(immutable: true) {
-  id: Bytes!
+  id: ID!
   sender: Bytes! # address
   value: BigInt! # uint256
   blockNumber: BigInt!

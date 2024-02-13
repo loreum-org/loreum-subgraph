@@ -1,0 +1,8 @@
+{
+  "sepolia": {
+    "Chamber": {
+      "address": "0xFe22FD2D328D793d73EEBa5e1Fff3474B3050588",
+      "startBlock": 5281759
+    }
+  }
+}

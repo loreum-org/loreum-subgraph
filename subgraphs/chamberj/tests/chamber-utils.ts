@@ -1,4 +1,4 @@
-import { describe, newMockEvent } from "matchstick-as"
+import { newMockEvent } from "matchstick-as"
 import { ethereum, Address, BigInt, Bytes } from "@graphprotocol/graph-ts"
 import {
   ChangedGuard,
