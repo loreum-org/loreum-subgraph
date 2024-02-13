@@ -1,7 +1,7 @@
 import {
   Approval as ApprovalEvent,
   Transfer as TransferEvent
-} from "../generated/JBToken/JBToken"
+} from "../generated/Token/Token"
 import { Approval, Transfer } from "../generated/schema"
 
 export function handleApproval(event: ApprovalEvent): void {

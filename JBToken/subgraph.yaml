@@ -5,11 +5,11 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
-    name: JBToken
+    name: Token
     network: sepolia
     source:
       address: "0xf8234C14Eb6B34AA23172111CB407fb5361f95f2"
-      abi: JBToken
+      abi: Token
       startBlock: 5239816
     mapping:
       kind: ethereum/events
@@ -19,11 +19,11 @@ dataSources:
         - Approval
         - Transfer
       abis:
-        - name: JBToken
-          file: ./abis/JBToken.json
+        - name: Token
+          file: ./abis/Token.json
       eventHandlers:
         - event: Approval(indexed address,indexed address,uint256)
           handler: handleApproval
         - event: Transfer(indexed address,indexed address,uint256)
           handler: handleTransfer
-      file: ./src/jb-token.ts
+      file: ./src/token.ts

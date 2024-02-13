@@ -1,6 +1,6 @@
 import { newMockEvent } from "matchstick-as"
 import { ethereum, Address, BigInt } from "@graphprotocol/graph-ts"
-import { Approval, Transfer } from "../generated/JBToken/JBToken"
+import { Approval, Transfer } from "../generated/Token/Token"
 
 export function createApprovalEvent(
   owner: Address,

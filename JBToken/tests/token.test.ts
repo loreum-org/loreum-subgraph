@@ -8,9 +8,9 @@ import {
 } from "matchstick-as/assembly/index"
 import { Address, BigInt } from "@graphprotocol/graph-ts"
 import { Approval } from "../generated/schema"
-import { Approval as ApprovalEvent } from "../generated/JBToken/JBToken"
-import { handleApproval } from "../src/jb-token"
-import { createApprovalEvent } from "./jb-token-utils"
+import { Approval as ApprovalEvent } from "../generated/Token/Token"
+import { handleApproval } from "../src/token"
+import { createApprovalEvent } from "./token-utils"
 
 // Tests structure (matchstick-as >=0.5.0)
 // https://thegraph.com/docs/en/developer/matchstick/#tests-structure-0-5-0
