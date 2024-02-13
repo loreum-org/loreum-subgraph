@@ -48,3 +48,29 @@ dataSources:
         - event: ReceivedFallback(indexed address,uint256)
           handler: handleReceivedFallback
       file: ./src/chamber.ts
+  - kind: ethereum
+    name: Registry
+    network: sepolia
+    source:
+      address: "0x1878abCC596bc0087c23E988e1aA2518fafc169E"
+      abi: Registry
+      startBlock: 5246964
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ChamberDeployed
+        - RegistryInitialized
+        - OwnershipTransferred
+      abis:
+        - name: Registry
+          file: ./abis/Registry.json
+      eventHandlers:
+        - event: ChamberDeployed(indexed address,indexed uint256,indexed address,address,address)
+          handler: handleChamberDeployed
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+      file: ./src/registry.ts

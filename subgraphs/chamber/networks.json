@@ -3,6 +3,9 @@
     "Chamber": {
       "address": "0x97f93A7dbe65399BB155e33Df5C225d7B275E30c",
       "startBlock": 5246964
+    },
+    "Registry": {
+      "address": "0x1878abCC596bc0087c23E988e1aA2518fafc169E"
     }
   }
 }

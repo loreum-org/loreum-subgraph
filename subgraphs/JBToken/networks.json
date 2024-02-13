@@ -1,0 +1,8 @@
+{
+  "sepolia": {
+    "JBToken": {
+      "address": "0xf8234C14Eb6B34AA23172111CB407fb5361f95f2",
+      "startBlock": 5239816
+    }
+  }
+}
