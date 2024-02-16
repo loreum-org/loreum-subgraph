@@ -19,7 +19,6 @@ type OwnershipTransferred @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
-
 type ChangedGuard @entity(immutable: true) {
   id: ID!
   guard: Bytes! # address
