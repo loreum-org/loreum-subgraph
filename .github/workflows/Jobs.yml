@@ -1,6 +1,6 @@
 name: Lint, Format, and Test
 
-on: push:
+on: push
 
 jobs:
   tests:
