@@ -9,6 +9,7 @@ import {
   ProposalApproved as ProposalApprovedEvent,
   ProposalCreated as ProposalCreatedEvent,
   ProposalExecuted as ProposalExecutedEvent,
+  ProposalCanceled as ProposalCanceledEvent,
   ReceivedEther as ReceivedEtherEvent,
   ReceivedFallback as ReceivedFallbackEvent,
 } from "../generated/templates/Chamber/Chamber";
@@ -21,6 +22,7 @@ import {
   ProposalApproved,
   ProposalCreated,
   ProposalExecuted,
+  ProposalCanceled,
   ReceivedEther,
   ReceivedFallback,
 } from "../generated/schema";
@@ -125,6 +127,19 @@ export function handleProposalExecuted(event: ProposalExecutedEvent): void {
   proposalExecutedTx.transactionHash = event.transaction.hash;
 
   proposalExecutedTx.save();
+}
+
+export function handleProposalCanceled(event: ProposalCanceledEvent): void {
+  const id = createId(event.transaction.hash, event.logIndex);
+  const proposalCanceledTx = new ProposalCanceled(id);
+  proposalCanceledTx.proposalId = event.params.proposalId;
+  proposalCanceledTx.contractAddress = changetype<Bytes>(event.transaction.to);
+
+  proposalCanceledTx.blockNumber = event.block.number;
+  proposalCanceledTx.blockTimestamp = event.block.timestamp;
+  proposalCanceledTx.transactionHash = event.transaction.hash;
+
+  proposalCanceledTx.save();
 }
 
 export function handleReceivedEther(event: ReceivedEtherEvent): void {

@@ -1,787 +1,800 @@
 [
   {
-    "inputs": [],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
+      "type": "constructor",
+      "inputs": [],
+      "stateMutability": "nonpayable"
   },
   {
-    "inputs": [],
-    "name": "executionFailed",
-    "type": "error"
+      "type": "fallback",
+      "stateMutability": "payable"
   },
   {
-    "inputs": [],
-    "name": "insufficientBalance",
-    "type": "error"
+      "type": "receive",
+      "stateMutability": "payable"
   },
   {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "message",
-        "type": "string"
-      }
-    ],
-    "name": "invalidApproval",
-    "type": "error"
+      "type": "function",
+      "name": "accountDelegation",
+      "inputs": [
+          {
+              "name": "",
+              "type": "address",
+              "internalType": "address"
+          },
+          {
+              "name": "",
+              "type": "uint256",
+              "internalType": "uint256"
+          }
+      ],
+      "outputs": [
+          {
+              "name": "",
+              "type": "uint256",
+              "internalType": "uint256"
+          }
+      ],
+      "stateMutability": "view"
   },
   {
-    "inputs": [],
-    "name": "invalidChangeAmount",
-    "type": "error"
+      "type": "function",
+      "name": "approveProposal",
+      "inputs": [
+          {
+              "name": "_proposalId",
+              "type": "uint256",
+              "internalType": "uint256"
+          },
+          {
+              "name": "_tokenId",
+              "type": "uint256",
+              "internalType": "uint256"
+          },
+          {
+              "name": "_signature",
+              "type": "bytes",
+              "internalType": "bytes"
+          }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
   },
   {
-    "inputs": [],
-    "name": "invalidDemotion",
-    "type": "error"
+      "type": "function",
+      "name": "cancelProposal",
+      "inputs": [
+          {
+              "name": "_proposalId",
+              "type": "uint256",
+              "internalType": "uint256"
+          }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
   },
   {
-    "inputs": [],
-    "name": "invalidPromotion",
-    "type": "error"
+      "type": "function",
+      "name": "constructMessageHash",
+      "inputs": [
+          {
+              "name": "_proposalId",
+              "type": "uint256",
+              "internalType": "uint256"
+          },
+          {
+              "name": "_tokenId",
+              "type": "uint256",
+              "internalType": "uint256"
+          }
+      ],
+      "outputs": [
+          {
+              "name": "",
+              "type": "bytes32",
+              "internalType": "bytes32"
+          }
+      ],
+      "stateMutability": "view"
   },
   {
-    "inputs": [],
-    "name": "invalidProposalState",
-    "type": "error"
+      "type": "function",
+      "name": "createProposal",
+      "inputs": [
+          {
+              "name": "_target",
+              "type": "address[]",
+              "internalType": "address[]"
+          },
+          {
+              "name": "_value",
+              "type": "uint256[]",
+              "internalType": "uint256[]"
+          },
+          {
+              "name": "_data",
+              "type": "bytes[]",
+              "internalType": "bytes[]"
+          }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
   },
   {
-    "inputs": [],
-    "name": "invalidTokenOwner",
-    "type": "error"
+      "type": "function",
+      "name": "demote",
+      "inputs": [
+          {
+              "name": "_amt",
+              "type": "uint256",
+              "internalType": "uint256"
+          },
+          {
+              "name": "_tokenId",
+              "type": "uint256",
+              "internalType": "uint256"
+          }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
   },
   {
-    "inputs": [],
-    "name": "invalidVote",
-    "type": "error"
+      "type": "function",
+      "name": "domainSeparator",
+      "inputs": [],
+      "outputs": [
+          {
+              "name": "",
+              "type": "bytes32",
+              "internalType": "bytes32"
+          }
+      ],
+      "stateMutability": "view"
   },
   {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "guard",
-        "type": "address"
-      }
-    ],
-    "name": "ChangedGuard",
-    "type": "event"
+      "type": "function",
+      "name": "executeProposal",
+      "inputs": [
+          {
+              "name": "_proposalId",
+              "type": "uint256",
+              "internalType": "uint256"
+          },
+          {
+              "name": "_tokenId",
+              "type": "uint256",
+              "internalType": "uint256"
+          },
+          {
+              "name": "_signature",
+              "type": "bytes",
+              "internalType": "bytes"
+          }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
   },
   {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "demoter",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amt",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      }
-    ],
-    "name": "Demoted",
-    "type": "event"
+      "type": "function",
+      "name": "getLeaderboard",
+      "inputs": [],
+      "outputs": [
+          {
+              "name": "",
+              "type": "uint256[]",
+              "internalType": "uint256[]"
+          },
+          {
+              "name": "",
+              "type": "uint256[]",
+              "internalType": "uint256[]"
+          }
+      ],
+      "stateMutability": "view"
   },
   {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "uint8",
-        "name": "version",
-        "type": "uint8"
-      }
-    ],
-    "name": "Initialized",
-    "type": "event"
+      "type": "function",
+      "name": "govToken",
+      "inputs": [],
+      "outputs": [
+          {
+              "name": "",
+              "type": "address",
+              "internalType": "address"
+          }
+      ],
+      "stateMutability": "view"
   },
   {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "promoter",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amt",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      }
-    ],
-    "name": "Promoted",
-    "type": "event"
+      "type": "function",
+      "name": "initialize",
+      "inputs": [
+          {
+              "name": "_memberToken",
+              "type": "address",
+              "internalType": "address"
+          },
+          {
+              "name": "_govToken",
+              "type": "address",
+              "internalType": "address"
+          }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
   },
   {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "proposalId",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "approvals",
-        "type": "uint256"
-      }
-    ],
-    "name": "ProposalApproved",
-    "type": "event"
+      "type": "function",
+      "name": "leaderboard",
+      "inputs": [
+          {
+              "name": "",
+              "type": "uint256",
+              "internalType": "uint256"
+          }
+      ],
+      "outputs": [
+          {
+              "name": "",
+              "type": "uint256",
+              "internalType": "uint256"
+          }
+      ],
+      "stateMutability": "view"
   },
   {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "proposalId",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "address[]",
-        "name": "target",
-        "type": "address[]"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256[]",
-        "name": "value",
-        "type": "uint256[]"
-      },
-      {
-        "indexed": false,
-        "internalType": "bytes[]",
-        "name": "data",
-        "type": "bytes[]"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256[5]",
-        "name": "voters",
-        "type": "uint256[5]"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "nonce",
-        "type": "uint256"
-      }
-    ],
-    "name": "ProposalCreated",
-    "type": "event"
+      "type": "function",
+      "name": "locked",
+      "inputs": [],
+      "outputs": [
+          {
+              "name": "",
+              "type": "bool",
+              "internalType": "bool"
+          }
+      ],
+      "stateMutability": "view"
   },
   {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "proposalId",
-        "type": "uint256"
-      }
-    ],
-    "name": "ProposalExecuted",
-    "type": "event"
+      "type": "function",
+      "name": "memberToken",
+      "inputs": [],
+      "outputs": [
+          {
+              "name": "",
+              "type": "address",
+              "internalType": "address"
+          }
+      ],
+      "stateMutability": "view"
   },
   {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "sender",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "value",
-        "type": "uint256"
-      }
-    ],
-    "name": "ReceivedEther",
-    "type": "event"
+      "type": "function",
+      "name": "nonce",
+      "inputs": [],
+      "outputs": [
+          {
+              "name": "",
+              "type": "uint256",
+              "internalType": "uint256"
+          }
+      ],
+      "stateMutability": "view"
   },
   {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "sender",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "value",
-        "type": "uint256"
-      }
-    ],
-    "name": "ReceivedFallback",
-    "type": "event"
+      "type": "function",
+      "name": "onERC1155BatchReceived",
+      "inputs": [
+          {
+              "name": "",
+              "type": "address",
+              "internalType": "address"
+          },
+          {
+              "name": "",
+              "type": "address",
+              "internalType": "address"
+          },
+          {
+              "name": "",
+              "type": "uint256[]",
+              "internalType": "uint256[]"
+          },
+          {
+              "name": "",
+              "type": "uint256[]",
+              "internalType": "uint256[]"
+          },
+          {
+              "name": "",
+              "type": "bytes",
+              "internalType": "bytes"
+          }
+      ],
+      "outputs": [
+          {
+              "name": "",
+              "type": "bytes4",
+              "internalType": "bytes4"
+          }
+      ],
+      "stateMutability": "nonpayable"
   },
   {
-    "stateMutability": "payable",
-    "type": "fallback"
+      "type": "function",
+      "name": "onERC1155Received",
+      "inputs": [
+          {
+              "name": "",
+              "type": "address",
+              "internalType": "address"
+          },
+          {
+              "name": "",
+              "type": "address",
+              "internalType": "address"
+          },
+          {
+              "name": "",
+              "type": "uint256",
+              "internalType": "uint256"
+          },
+          {
+              "name": "",
+              "type": "uint256",
+              "internalType": "uint256"
+          },
+          {
+              "name": "",
+              "type": "bytes",
+              "internalType": "bytes"
+          }
+      ],
+      "outputs": [
+          {
+              "name": "",
+              "type": "bytes4",
+              "internalType": "bytes4"
+          }
+      ],
+      "stateMutability": "nonpayable"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "accountDelegation",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
+      "type": "function",
+      "name": "onERC721Received",
+      "inputs": [
+          {
+              "name": "",
+              "type": "address",
+              "internalType": "address"
+          },
+          {
+              "name": "",
+              "type": "address",
+              "internalType": "address"
+          },
+          {
+              "name": "",
+              "type": "uint256",
+              "internalType": "uint256"
+          },
+          {
+              "name": "",
+              "type": "bytes",
+              "internalType": "bytes"
+          }
+      ],
+      "outputs": [
+          {
+              "name": "",
+              "type": "bytes4",
+              "internalType": "bytes4"
+          }
+      ],
+      "stateMutability": "nonpayable"
   },
   {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_proposalId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_tokenId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "bytes",
-        "name": "_signature",
-        "type": "bytes"
-      }
-    ],
-    "name": "approveProposal",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+      "type": "function",
+      "name": "promote",
+      "inputs": [
+          {
+              "name": "_amt",
+              "type": "uint256",
+              "internalType": "uint256"
+          },
+          {
+              "name": "_tokenId",
+              "type": "uint256",
+              "internalType": "uint256"
+          }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
   },
   {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_proposalId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_tokenId",
-        "type": "uint256"
-      }
-    ],
-    "name": "constructMessageHash",
-    "outputs": [
-      {
-        "internalType": "bytes32",
-        "name": "",
-        "type": "bytes32"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
+      "type": "function",
+      "name": "proposal",
+      "inputs": [
+          {
+              "name": "proposalId",
+              "type": "uint256",
+              "internalType": "uint256"
+          }
+      ],
+      "outputs": [
+          {
+              "name": "approvals",
+              "type": "uint256",
+              "internalType": "uint256"
+          },
+          {
+              "name": "state",
+              "type": "uint8",
+              "internalType": "enum IChamber.State"
+          }
+      ],
+      "stateMutability": "view"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address[]",
-        "name": "_target",
-        "type": "address[]"
-      },
-      {
-        "internalType": "uint256[]",
-        "name": "_value",
-        "type": "uint256[]"
-      },
-      {
-        "internalType": "bytes[]",
-        "name": "_data",
-        "type": "bytes[]"
-      }
-    ],
-    "name": "createProposal",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+      "type": "function",
+      "name": "setGuard",
+      "inputs": [
+          {
+              "name": "guard",
+              "type": "address",
+              "internalType": "address"
+          }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
   },
   {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_amt",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_tokenId",
-        "type": "uint256"
-      }
-    ],
-    "name": "demote",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+      "type": "function",
+      "name": "supportsInterface",
+      "inputs": [
+          {
+              "name": "interfaceId",
+              "type": "bytes4",
+              "internalType": "bytes4"
+          }
+      ],
+      "outputs": [
+          {
+              "name": "",
+              "type": "bool",
+              "internalType": "bool"
+          }
+      ],
+      "stateMutability": "view"
   },
   {
-    "inputs": [],
-    "name": "domainSeparator",
-    "outputs": [
-      {
-        "internalType": "bytes32",
-        "name": "",
-        "type": "bytes32"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
+      "type": "function",
+      "name": "totalDelegation",
+      "inputs": [
+          {
+              "name": "",
+              "type": "uint256",
+              "internalType": "uint256"
+          }
+      ],
+      "outputs": [
+          {
+              "name": "",
+              "type": "uint256",
+              "internalType": "uint256"
+          }
+      ],
+      "stateMutability": "view"
   },
   {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_proposalId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_tokenId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "bytes",
-        "name": "_signature",
-        "type": "bytes"
-      }
-    ],
-    "name": "executeProposal",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+      "type": "function",
+      "name": "verifySignature",
+      "inputs": [
+          {
+              "name": "_proposalId",
+              "type": "uint256",
+              "internalType": "uint256"
+          },
+          {
+              "name": "_tokenId",
+              "type": "uint256",
+              "internalType": "uint256"
+          },
+          {
+              "name": "_signature",
+              "type": "bytes",
+              "internalType": "bytes"
+          }
+      ],
+      "outputs": [
+          {
+              "name": "",
+              "type": "bool",
+              "internalType": "bool"
+          }
+      ],
+      "stateMutability": "view"
   },
   {
-    "inputs": [],
-    "name": "getLeaderboard",
-    "outputs": [
-      {
-        "internalType": "uint256[]",
-        "name": "",
-        "type": "uint256[]"
-      },
-      {
-        "internalType": "uint256[]",
-        "name": "",
-        "type": "uint256[]"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
+      "type": "function",
+      "name": "voted",
+      "inputs": [
+          {
+              "name": "",
+              "type": "uint256",
+              "internalType": "uint256"
+          },
+          {
+              "name": "",
+              "type": "uint256",
+              "internalType": "uint256"
+          }
+      ],
+      "outputs": [
+          {
+              "name": "",
+              "type": "bool",
+              "internalType": "bool"
+          }
+      ],
+      "stateMutability": "view"
   },
   {
-    "inputs": [],
-    "name": "govToken",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
+      "type": "event",
+      "name": "ChangedGuard",
+      "inputs": [
+          {
+              "name": "guard",
+              "type": "address",
+              "indexed": true,
+              "internalType": "address"
+          }
+      ],
+      "anonymous": false
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_memberToken",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_govToken",
-        "type": "address"
-      }
-    ],
-    "name": "initialize",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+      "type": "event",
+      "name": "Demoted",
+      "inputs": [
+          {
+              "name": "demoter",
+              "type": "address",
+              "indexed": false,
+              "internalType": "address"
+          },
+          {
+              "name": "amt",
+              "type": "uint256",
+              "indexed": false,
+              "internalType": "uint256"
+          },
+          {
+              "name": "tokenId",
+              "type": "uint256",
+              "indexed": false,
+              "internalType": "uint256"
+          }
+      ],
+      "anonymous": false
   },
   {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "leaderboard",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
+      "type": "event",
+      "name": "Initialized",
+      "inputs": [
+          {
+              "name": "version",
+              "type": "uint8",
+              "indexed": false,
+              "internalType": "uint8"
+          }
+      ],
+      "anonymous": false
   },
   {
-    "inputs": [],
-    "name": "locked",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
+      "type": "event",
+      "name": "Promoted",
+      "inputs": [
+          {
+              "name": "promoter",
+              "type": "address",
+              "indexed": false,
+              "internalType": "address"
+          },
+          {
+              "name": "amt",
+              "type": "uint256",
+              "indexed": false,
+              "internalType": "uint256"
+          },
+          {
+              "name": "tokenId",
+              "type": "uint256",
+              "indexed": false,
+              "internalType": "uint256"
+          }
+      ],
+      "anonymous": false
   },
   {
-    "inputs": [],
-    "name": "memberToken",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
+      "type": "event",
+      "name": "ProposalApproved",
+      "inputs": [
+          {
+              "name": "proposalId",
+              "type": "uint256",
+              "indexed": false,
+              "internalType": "uint256"
+          },
+          {
+              "name": "tokenId",
+              "type": "uint256",
+              "indexed": false,
+              "internalType": "uint256"
+          },
+          {
+              "name": "approvals",
+              "type": "uint256",
+              "indexed": false,
+              "internalType": "uint256"
+          }
+      ],
+      "anonymous": false
   },
   {
-    "inputs": [],
-    "name": "nonce",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
+      "type": "event",
+      "name": "ProposalCanceled",
+      "inputs": [
+          {
+              "name": "proposalId",
+              "type": "uint256",
+              "indexed": false,
+              "internalType": "uint256"
+          }
+      ],
+      "anonymous": false
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256[]",
-        "name": "",
-        "type": "uint256[]"
-      },
-      {
-        "internalType": "uint256[]",
-        "name": "",
-        "type": "uint256[]"
-      },
-      {
-        "internalType": "bytes",
-        "name": "",
-        "type": "bytes"
-      }
-    ],
-    "name": "onERC1155BatchReceived",
-    "outputs": [
-      {
-        "internalType": "bytes4",
-        "name": "",
-        "type": "bytes4"
-      }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "function"
+      "type": "event",
+      "name": "ProposalCreated",
+      "inputs": [
+          {
+              "name": "proposalId",
+              "type": "uint256",
+              "indexed": false,
+              "internalType": "uint256"
+          },
+          {
+              "name": "target",
+              "type": "address[]",
+              "indexed": false,
+              "internalType": "address[]"
+          },
+          {
+              "name": "value",
+              "type": "uint256[]",
+              "indexed": false,
+              "internalType": "uint256[]"
+          },
+          {
+              "name": "data",
+              "type": "bytes[]",
+              "indexed": false,
+              "internalType": "bytes[]"
+          },
+          {
+              "name": "voters",
+              "type": "uint256[5]",
+              "indexed": false,
+              "internalType": "uint256[5]"
+          },
+          {
+              "name": "nonce",
+              "type": "uint256",
+              "indexed": false,
+              "internalType": "uint256"
+          }
+      ],
+      "anonymous": false
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      },
-      {
-        "internalType": "bytes",
-        "name": "",
-        "type": "bytes"
-      }
-    ],
-    "name": "onERC1155Received",
-    "outputs": [
-      {
-        "internalType": "bytes4",
-        "name": "",
-        "type": "bytes4"
-      }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "function"
+      "type": "event",
+      "name": "ProposalExecuted",
+      "inputs": [
+          {
+              "name": "proposalId",
+              "type": "uint256",
+              "indexed": false,
+              "internalType": "uint256"
+          }
+      ],
+      "anonymous": false
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      },
-      {
-        "internalType": "bytes",
-        "name": "",
-        "type": "bytes"
-      }
-    ],
-    "name": "onERC721Received",
-    "outputs": [
-      {
-        "internalType": "bytes4",
-        "name": "",
-        "type": "bytes4"
-      }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "function"
+      "type": "event",
+      "name": "ReceivedEther",
+      "inputs": [
+          {
+              "name": "sender",
+              "type": "address",
+              "indexed": true,
+              "internalType": "address"
+          },
+          {
+              "name": "value",
+              "type": "uint256",
+              "indexed": false,
+              "internalType": "uint256"
+          }
+      ],
+      "anonymous": false
   },
   {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_amt",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_tokenId",
-        "type": "uint256"
-      }
-    ],
-    "name": "promote",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+      "type": "event",
+      "name": "ReceivedFallback",
+      "inputs": [
+          {
+              "name": "sender",
+              "type": "address",
+              "indexed": true,
+              "internalType": "address"
+          },
+          {
+              "name": "value",
+              "type": "uint256",
+              "indexed": false,
+              "internalType": "uint256"
+          }
+      ],
+      "anonymous": false
   },
   {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "proposalId",
-        "type": "uint256"
-      }
-    ],
-    "name": "proposal",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "approvals",
-        "type": "uint256"
-      },
-      {
-        "internalType": "enum IChamber.State",
-        "name": "state",
-        "type": "uint8"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
+      "type": "error",
+      "name": "executionFailed",
+      "inputs": []
   },
   {
-    "inputs": [],
-    "name": "proposalCount",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
+      "type": "error",
+      "name": "insufficientBalance",
+      "inputs": []
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "guard",
-        "type": "address"
-      }
-    ],
-    "name": "setGuard",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+      "type": "error",
+      "name": "invalidApproval",
+      "inputs": [
+          {
+              "name": "message",
+              "type": "string",
+              "internalType": "string"
+          }
+      ]
   },
   {
-    "inputs": [
-      {
-        "internalType": "bytes4",
-        "name": "interfaceId",
-        "type": "bytes4"
-      }
-    ],
-    "name": "supportsInterface",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
+      "type": "error",
+      "name": "invalidChangeAmount",
+      "inputs": []
   },
   {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "totalDelegation",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
+      "type": "error",
+      "name": "invalidDemotion",
+      "inputs": []
   },
   {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_proposalId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_tokenId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "bytes",
-        "name": "_signature",
-        "type": "bytes"
-      }
-    ],
-    "name": "verifySignature",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
+      "type": "error",
+      "name": "invalidPromotion",
+      "inputs": []
   },
   {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "voted",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
+      "type": "error",
+      "name": "invalidProposalState",
+      "inputs": []
   },
   {
-    "stateMutability": "payable",
-    "type": "receive"
+      "type": "error",
+      "name": "invalidTokenOwner",
+      "inputs": []
+  },
+  {
+      "type": "error",
+      "name": "invalidVote",
+      "inputs": []
   }
 ]
