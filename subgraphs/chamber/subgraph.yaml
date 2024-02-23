@@ -66,6 +66,8 @@ templates:
           handler: handleProposalCreated
         - event: ProposalExecuted(uint256)
           handler: handleProposalExecuted
+        - event: ProposalCanceled(uint256)
+          handler: handleProposalCanceled
         - event: ReceivedEther(indexed address,uint256)
           handler: handleReceivedEther
         - event: ReceivedFallback(indexed address,uint256)

@@ -11,6 +11,7 @@ import {
   ProposalApproved,
   ProposalCreated,
   ProposalExecuted,
+  ProposalCanceled,
   ReceivedEther,
   ReceivedFallback,
 } from "../../generated/templates/Chamber/Chamber";
@@ -194,6 +195,22 @@ export function createProposalExecutedEvent(proposalId: i32): ProposalExecuted {
   );
   proposalExecutedEvent.parameters.push(uintEventParam("proposalId", proposalId));
   return proposalExecutedEvent;
+}
+
+export function createProposalCanceledEvent(proposalId: i32): ProposalCanceled {
+  const mockEvent = newMockEvent();
+  const proposalCanceledEvent = new ProposalCanceled(
+    mockEvent.address,
+    mockEvent.logIndex,
+    mockEvent.transactionLogIndex,
+    mockEvent.logType,
+    mockEvent.block,
+    mockEvent.transaction,
+    [],
+    mockEvent.receipt
+  );
+  proposalCanceledEvent.parameters.push(uintEventParam("proposalId", proposalId));
+  return proposalCanceledEvent;
 }
 
 export function createReceivedEtherEvent(sender: string, value: i32): ReceivedEther {

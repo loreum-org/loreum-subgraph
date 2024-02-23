@@ -94,6 +94,15 @@ type ProposalExecuted @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
+type ProposalCanceled @entity(immutable: true) {
+  id: ID!
+  proposalId: BigInt! # uint256
+  contractAddress: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
 type ReceivedEther @entity(immutable: true) {
   id: ID!
   sender: Bytes! # address

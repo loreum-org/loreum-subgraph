@@ -8,6 +8,7 @@ import {
   ProposalApproved as ProposalApprovedTx,
   ProposalCreated as ProposalCreatedTx,
   ProposalExecuted as ProposalExecutedTx,
+  ProposalCanceled as ProposalCanceledTx,
   ReceivedEther as ReceivedEtherTx,
   ReceivedFallback as ReceivedFallbackTX,
 } from "../../generated/schema";
@@ -22,6 +23,7 @@ import {
   ProposalApproved,
   ProposalCreated,
   ProposalExecuted,
+  ProposalCanceled,
   ReceivedEther,
   ReceivedFallback,
 } from "../../generated/templates/Chamber/Chamber";
@@ -111,6 +113,14 @@ export const expectProposalExecutedAdded = (event: ProposalExecuted): void => {
   assert.assertNotNull(proposalExecutedTx);
   if (!proposalExecutedTx) return;
   assert.bigIntEquals(event.params.proposalId, proposalExecutedTx.proposalId);
+};
+
+export const expectProposalCanceledAdded = (event: ProposalCanceled): void => {
+  const id = createId(event.transaction.hash, event.transactionLogIndex);
+  const proposalCanceledTx = ProposalCanceledTx.load(id);
+  assert.assertNotNull(proposalCanceledTx);
+  if (!proposalCanceledTx) return;
+  assert.bigIntEquals(event.params.proposalId, proposalCanceledTx.proposalId);
 };
 
 export const expectReceivedEtherAdded = (event: ReceivedEther): void => {

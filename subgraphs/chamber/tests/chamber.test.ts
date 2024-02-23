@@ -8,6 +8,7 @@ import {
   ProposalApproved,
   // ProposalCreated,
   ProposalExecuted,
+  ProposalCanceled,
   ReceivedEther,
   ReceivedFallback,
 } from "../generated/templates/Chamber/Chamber";
@@ -20,6 +21,7 @@ import {
   handleProposalApproved,
   // handleProposalCreated,
   handleProposalExecuted,
+  handleProposalCanceled,
   handleReceivedEther,
   handleReceivedFallback,
 } from "../src/chamber";
@@ -32,6 +34,7 @@ import {
   createProposalApprovedEvent,
   // createProposalCreatedEvent,
   createProposalExecutedEvent,
+  createProposalCanceledEvent,
   createReceivedEtherEvent,
   createReceivedFallbackEvent,
 } from "./helpers/utils";
@@ -44,6 +47,7 @@ import {
   expectProposalApprovedAdded,
   // expectProposalCreatedAdded,
   expectProposalExecutedAdded,
+  expectProposalCanceledAdded,
   expectReceivedEtherAdded,
   expectReceivedFallbackAdded,
 } from "./helpers/assertions";
@@ -158,6 +162,18 @@ describe("Chamber Test", () => {
       const event = createMockProposalExecutedEvent();
       handleProposalExecuted(event);
       expectProposalExecutedAdded(event);
+    });
+  });
+
+  describe("Test ProposalCanceled", () => {
+    const createMockProposalCanceledEvent = (proposalId: i32 = 1): ProposalCanceled => {
+      const event = createProposalCanceledEvent(proposalId);
+      return event;
+    };
+    test("Handel ProposalCanceled Tx", () => {
+      const event = createMockProposalCanceledEvent();
+      handleProposalCanceled(event);
+      expectProposalCanceledAdded(event);
     });
   });
 
