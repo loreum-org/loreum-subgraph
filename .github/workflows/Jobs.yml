@@ -6,7 +6,6 @@ jobs:
   tests:
     name: Matchstick
     runs-on: macos-latest
-    container: node:20
 
     services:
       postgres:
@@ -20,20 +19,13 @@ jobs:
           --health-retries 5
 
     steps:
-      - name: Install Docker
-        run: |
-          brew install --cask docker
-          open /Applications/Docker.app
-          # Wait for Docker to start
-          while ! docker system info > /dev/null 2>&1; do sleep 1; done
-
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20.x
+          node-version: 18.x
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
