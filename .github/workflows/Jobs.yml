@@ -5,7 +5,7 @@ on: push
 jobs:
   tests:
     name: Matchstick
-    runs-on: macos-14
+    runs-on: macos-12
     container: node:20
 
     services:
