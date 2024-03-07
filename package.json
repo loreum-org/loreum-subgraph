@@ -13,6 +13,7 @@
     "mac": "docker-compose --file mac.yaml up --build",
     "intel": "docker-compose --file intel.yaml up --build",
     "codegen": "lerna run codegen",
+    "build": "lerna run build",
     "build:local": "lerna run build:local",
     "build:goerli": "lerna run build:goerli",
     "build:mainnet": "lerna run build:mainnet",
