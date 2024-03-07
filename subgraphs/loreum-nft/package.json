@@ -8,6 +8,7 @@
   "scripts": {
     "start": "yarn codegen && yarn build:local && yarn remove:local && yarn create:local && yarn deploy:local",
     "codegen": "graph codegen",
+    "build": "graph build subgraph.yaml",
     "build:local": "graph build subgraph.yaml --network localhost",
     "create:local": "graph create --node http://localhost:8020/ loreum-nft --network localhost",
     "remove:local": "graph remove --node http://localhost:8020/ loreum-nft --network localhost",
