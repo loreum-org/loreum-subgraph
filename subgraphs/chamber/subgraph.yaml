@@ -6,8 +6,8 @@ dataSources:
     name: Registry
     network: sepolia
     source:
-      address: "0x62996E7041C0A434B8d0268EF7F6BBCf2d668dA7"
       abi: Registry
+      address: "0x46A49D4391F2F220D3661b2a2BFe4b306EE18845"
       startBlock: 5281759
     mapping:
       kind: ethereum/events
@@ -21,7 +21,8 @@ dataSources:
         - name: Registry
           file: ./abis/Registry.json
       eventHandlers:
-        - event: ChamberDeployed(indexed address,indexed uint256,indexed address,address,address)
+        - event: ChamberDeployed(indexed address,indexed uint256,indexed
+            address,address,address)
           handler: handleChamberDeployed
         - event: OwnershipTransferred(indexed address,indexed address)
           handler: handleOwnershipTransferred

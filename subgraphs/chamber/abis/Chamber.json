@@ -38,20 +38,20 @@
   },
   {
     "type": "function",
-    "name": "approveProposal",
+    "name": "approve",
     "inputs": [
       {
-        "name": "_proposalId",
+        "name": "proposalId",
         "type": "uint256",
         "internalType": "uint256"
       },
       {
-        "name": "_tokenId",
+        "name": "tokenId",
         "type": "uint256",
         "internalType": "uint256"
       },
       {
-        "name": "_signature",
+        "name": "signature",
         "type": "bytes",
         "internalType": "bytes"
       }
@@ -61,10 +61,10 @@
   },
   {
     "type": "function",
-    "name": "cancelProposal",
+    "name": "cancel",
     "inputs": [
       {
-        "name": "_proposalId",
+        "name": "proposalId",
         "type": "uint256",
         "internalType": "uint256"
       }
@@ -77,12 +77,12 @@
     "name": "constructMessageHash",
     "inputs": [
       {
-        "name": "_proposalId",
+        "name": "proposalId",
         "type": "uint256",
         "internalType": "uint256"
       },
       {
-        "name": "_tokenId",
+        "name": "tokenId",
         "type": "uint256",
         "internalType": "uint256"
       }
@@ -98,20 +98,20 @@
   },
   {
     "type": "function",
-    "name": "createProposal",
+    "name": "create",
     "inputs": [
       {
-        "name": "_target",
+        "name": "targets",
         "type": "address[]",
         "internalType": "address[]"
       },
       {
-        "name": "_value",
+        "name": "values",
         "type": "uint256[]",
         "internalType": "uint256[]"
       },
       {
-        "name": "_data",
+        "name": "datas",
         "type": "bytes[]",
         "internalType": "bytes[]"
       }
@@ -124,12 +124,12 @@
     "name": "demote",
     "inputs": [
       {
-        "name": "_amt",
+        "name": "amount",
         "type": "uint256",
         "internalType": "uint256"
       },
       {
-        "name": "_tokenId",
+        "name": "tokenId",
         "type": "uint256",
         "internalType": "uint256"
       }
@@ -152,20 +152,20 @@
   },
   {
     "type": "function",
-    "name": "executeProposal",
+    "name": "execute",
     "inputs": [
       {
-        "name": "_proposalId",
+        "name": "proposalId",
         "type": "uint256",
         "internalType": "uint256"
       },
       {
-        "name": "_tokenId",
+        "name": "tokenId",
         "type": "uint256",
         "internalType": "uint256"
       },
       {
-        "name": "_signature",
+        "name": "signature",
         "type": "bytes",
         "internalType": "bytes"
       }
@@ -397,12 +397,12 @@
     "name": "promote",
     "inputs": [
       {
-        "name": "_amt",
+        "name": "amount",
         "type": "uint256",
         "internalType": "uint256"
       },
       {
-        "name": "_tokenId",
+        "name": "tokenId",
         "type": "uint256",
         "internalType": "uint256"
       }
@@ -490,17 +490,17 @@
     "name": "verifySignature",
     "inputs": [
       {
-        "name": "_proposalId",
+        "name": "proposalId",
         "type": "uint256",
         "internalType": "uint256"
       },
       {
-        "name": "_tokenId",
+        "name": "tokenId",
         "type": "uint256",
         "internalType": "uint256"
       },
       {
-        "name": "_signature",
+        "name": "signature",
         "type": "bytes",
         "internalType": "bytes"
       }

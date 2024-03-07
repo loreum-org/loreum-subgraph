@@ -8,16 +8,17 @@
   "scripts": {
     "start": "yarn codegen && yarn build:local && yarn remove:local && yarn create:local && yarn deploy:local",
     "codegen": "graph codegen",
+    "build": "graph build subgraph.yaml",
+    "test": "graph test",
     "build:local": "graph build subgraph.yaml --network localhost",
     "create:local": "graph create --node http://localhost:8020/ chamber --network localhost",
     "remove:local": "graph remove --node http://localhost:8020/ chamber --network localhost",
     "deploy:local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 chamber --version-label v0.0.1 --network localhost",
-    "build:goerli": "graph build subgraph.yaml --network goerli",
+    "build:sepolia": "graph build subgraph.yaml --network sepolia",
     "build:mainnet": "graph build subgraph.yaml --network mainnet",
-    "deploy:goerli": "graph deploy --product hosted-service --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ loreum/chamber subgraph.yaml --network goerli",
+    "deploy:sepolia": "graph deploy --studio --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ loreum/loreum-registry-sepolia subgraph.yaml --network sepolia",
     "deploy:mainnet": "graph deploy --product hosted-service --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ looksrare/aggregator subgraph.yaml --network mainnet",
     "deploy:studio": "graph codegen subgraph.yaml && graph build subgraph.yaml && graph deploy --studio chamber --network mainnet",
-    "test": "graph test -r",
     "test:lerna": "graph codegen subgraph.yaml && graph build subgraph.yaml && graph test -r"
   }
 }
