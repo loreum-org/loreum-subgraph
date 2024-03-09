@@ -2,52 +2,52 @@ import { describe, test } from "matchstick-as";
 
 import {
   ChangedGuard,
-  Demoted,
+  Demotion,
   Initialized,
-  Promoted,
-  ProposalApproved,
-  // ProposalCreated,
-  ProposalExecuted,
-  ProposalCanceled,
+  Promotion,
+  ApprovedProposal,
+  // CreatedProposal,
+  ExecutedProposal,
+  CanceledProposal,
   ReceivedEther,
   ReceivedFallback,
 } from "../generated/templates/Chamber/Chamber";
 
 import {
   handleChangedGuard,
-  handleDemoted,
+  handleDemotion,
   handleInitialized,
-  handlePromoted,
-  handleProposalApproved,
-  // handleProposalCreated,
-  handleProposalExecuted,
-  handleProposalCanceled,
+  handlePromotion,
+  handleApprovedProposal,
+  // handleCreatedProposal,
+  handleExecutedProposal,
+  handleCanceledProposal,
   handleReceivedEther,
   handleReceivedFallback,
 } from "../src/chamber";
 
 import {
   createChangedGuardEvent,
-  createDemotedEvent,
+  createDemotionEvent,
   createInitializedEvent,
-  createPromotedEvent,
-  createProposalApprovedEvent,
-  // createProposalCreatedEvent,
-  createProposalExecutedEvent,
-  createProposalCanceledEvent,
+  createPromotionEvent,
+  createApprovedProposalEvent,
+  // createCreatedProposalEvent,
+  createExecutedProposalEvent,
+  createCanceledProposalEvent,
   createReceivedEtherEvent,
   createReceivedFallbackEvent,
 } from "./helpers/utils";
 
 import {
   expectChangedGuardAdded,
-  expectDemotedAdded,
+  expectDemotionAdded,
   expectInitializedAdded,
-  expectPromotedAdded,
-  expectProposalApprovedAdded,
-  // expectProposalCreatedAdded,
-  expectProposalExecutedAdded,
-  expectProposalCanceledAdded,
+  expectPromotionAdded,
+  expectApprovedProposalAdded,
+  // expectCreatedProposalAdded,
+  expectExecutedProposalAdded,
+  expectCanceledProposalAdded,
   expectReceivedEtherAdded,
   expectReceivedFallbackAdded,
 } from "./helpers/assertions";
@@ -67,19 +67,19 @@ describe("Chamber Test", () => {
     });
   });
 
-  describe("Test Demoted", () => {
-    const createMockDemotedEvent = (
+  describe("Test Demotion", () => {
+    const createMockDemotionEvent = (
       demoter: string = "0x8e1aa1674d9fc9f0dca4a4d31db85e65d216666c",
       amt: i32 = 100,
       tokenId: i32 = 1
-    ): Demoted => {
-      const event = createDemotedEvent(demoter, amt, tokenId);
+    ): Demotion => {
+      const event = createDemotionEvent(demoter, amt, tokenId);
       return event;
     };
-    test("Handel Demoted Tx", () => {
-      const event = createMockDemotedEvent();
-      handleDemoted(event);
-      expectDemotedAdded(event);
+    test("Handel Demotion Tx", () => {
+      const event = createMockDemotionEvent();
+      handleDemotion(event);
+      expectDemotionAdded(event);
     });
   });
 
@@ -95,48 +95,48 @@ describe("Chamber Test", () => {
     });
   });
 
-  describe("Test Promoted", () => {
-    const createMockPromotedEvent = (
+  describe("Test Promotion", () => {
+    const createMockPromotionEvent = (
       promoter: string = "0x8e1aa1674d9fc9f0dca4a4d31db85e65d216666c",
       amt: i32 = 100,
       tokenId: i32 = 1
-    ): Promoted => {
-      const event = createPromotedEvent(promoter, amt, tokenId);
+    ): Promotion => {
+      const event = createPromotionEvent(promoter, amt, tokenId);
       return event;
     };
-    test("Handel Promoted Tx", () => {
-      const event = createMockPromotedEvent();
-      handlePromoted(event);
-      expectPromotedAdded(event);
+    test("Handel Promotion Tx", () => {
+      const event = createMockPromotionEvent();
+      handlePromotion(event);
+      expectPromotionAdded(event);
     });
   });
 
-  describe("Test ProposalApproved", () => {
-    const createMockProposalApprovedEvent = (
+  describe("Test ApprovedProposal", () => {
+    const createMockApprovedProposalEvent = (
       proposalId: i32 = 1,
       tokenId: i32 = 1,
       approvals: i32 = 1
-    ): ProposalApproved => {
-      const event = createProposalApprovedEvent(proposalId, tokenId, approvals);
+    ): ApprovedProposal => {
+      const event = createApprovedProposalEvent(proposalId, tokenId, approvals);
       return event;
     };
-    test("Handel ProposalApproved Tx", () => {
-      const event = createMockProposalApprovedEvent();
-      handleProposalApproved(event);
-      expectProposalApprovedAdded(event);
+    test("Handel ApprovedProposal Tx", () => {
+      const event = createMockApprovedProposalEvent();
+      handleApprovedProposal(event);
+      expectApprovedProposalAdded(event);
     });
   });
 
-  // describe ("Test ProposalCreated", () => {
-  //     const createMockProposalCreatedEvent = (
+  // describe ("Test CreatedProposal", () => {
+  //     const createMockCreatedProposalEvent = (
   //         proposalId: i32 = 1,
   //         target: string[] = ['0x2e0049b05217290087BA613290BaCC761d7adD04','0x8E1aA1674D9Fc9f0dca4a4D31db85E65D216666c'] ,
   //         value: i32[] = [1,1],
   //         data: string[] = ['',''],
   //         voters: i32[] = [1,2,3,4,5],
   //         nonce: i32 = 1,
-  //     ) : ProposalCreated => {
-  //         const event = createProposalCreatedEvent(
+  //     ) : CreatedProposal => {
+  //         const event = createCreatedProposalEvent(
   //             proposalId,
   //             target,
   //             value,
@@ -146,34 +146,34 @@ describe("Chamber Test", () => {
   //         );
   //         return event;
   //     };
-  //     test ("Handel ProposalCreated Tx", () => {
-  //         const event = createMockProposalCreatedEvent();
-  //         handleProposalCreated(event);
-  //         expectProposalCreatedAdded(event);
+  //     test ("Handel CreatedProposal Tx", () => {
+  //         const event = createMockCreatedProposalEvent();
+  //         handleCreatedProposal(event);
+  //         expectCreatedProposalAdded(event);
   //     })
   // })
 
-  describe("Test ProposalExecuted", () => {
-    const createMockProposalExecutedEvent = (proposalId: i32 = 1): ProposalExecuted => {
-      const event = createProposalExecutedEvent(proposalId);
+  describe("Test ExecutedProposal", () => {
+    const createMockExecutedProposalEvent = (proposalId: i32 = 1): ExecutedProposal => {
+      const event = createExecutedProposalEvent(proposalId);
       return event;
     };
-    test("Handel ProposalExecuted Tx", () => {
-      const event = createMockProposalExecutedEvent();
-      handleProposalExecuted(event);
-      expectProposalExecutedAdded(event);
+    test("Handel ExecutedProposal Tx", () => {
+      const event = createMockExecutedProposalEvent();
+      handleExecutedProposal(event);
+      expectExecutedProposalAdded(event);
     });
   });
 
-  describe("Test ProposalCanceled", () => {
-    const createMockProposalCanceledEvent = (proposalId: i32 = 1): ProposalCanceled => {
-      const event = createProposalCanceledEvent(proposalId);
+  describe("Test CanceledProposal", () => {
+    const createMockCanceledProposalEvent = (proposalId: i32 = 1): CanceledProposal => {
+      const event = createCanceledProposalEvent(proposalId);
       return event;
     };
-    test("Handel ProposalCanceled Tx", () => {
-      const event = createMockProposalCanceledEvent();
-      handleProposalCanceled(event);
-      expectProposalCanceledAdded(event);
+    test("Handel CanceledProposal Tx", () => {
+      const event = createMockCanceledProposalEvent();
+      handleCanceledProposal(event);
+      expectCanceledProposalAdded(event);
     });
   });
 

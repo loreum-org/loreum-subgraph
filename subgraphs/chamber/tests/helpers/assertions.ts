@@ -2,13 +2,13 @@ import {
   ChamberDeployed as ChamberDeployedTx,
   OwnershipTransferred as OwnershipTransferredTx,
   ChangedGuard as ChangedGuardTx,
-  Demoted as DemotedTx,
+  Demotion as DemotionTx,
   Initialized as InitializeTx,
-  Promoted as PromotedTx,
-  ProposalApproved as ProposalApprovedTx,
-  ProposalCreated as ProposalCreatedTx,
-  ProposalExecuted as ProposalExecutedTx,
-  ProposalCanceled as ProposalCanceledTx,
+  Promotion as PromotionTx,
+  ApprovedProposal as ApprovedProposalTx,
+  CreatedProposal as CreatedProposalTx,
+  ExecutedProposal as ExecutedProposalTx,
+  CanceledProposal as CanceledProposalTx,
   ReceivedEther as ReceivedEtherTx,
   ReceivedFallback as ReceivedFallbackTX,
 } from "../../generated/schema";
@@ -17,13 +17,13 @@ import { ChamberDeployed, OwnershipTransferred } from "../../generated/Registry/
 
 import {
   ChangedGuard,
-  Demoted,
+  Demotion,
   Initialized,
-  Promoted,
-  ProposalApproved,
-  ProposalCreated,
-  ProposalExecuted,
-  ProposalCanceled,
+  Promotion,
+  ApprovedProposal,
+  CreatedProposal,
+  ExecutedProposal,
+  CanceledProposal,
   ReceivedEther,
   ReceivedFallback,
 } from "../../generated/templates/Chamber/Chamber";
@@ -61,14 +61,14 @@ export const expectChangedGuardAdded = (event: ChangedGuard): void => {
   assert.bytesEquals(event.params.guard, changedGuardTx.guard);
 };
 
-export const expectDemotedAdded = (event: Demoted): void => {
+export const expectDemotionAdded = (event: Demotion): void => {
   const id = createId(event.transaction.hash, event.transactionLogIndex);
-  const demotedTx = DemotedTx.load(id);
-  assert.assertNotNull(demotedTx);
-  if (!demotedTx) return;
-  assert.bytesEquals(event.params.demoter, demotedTx.demoter);
-  assert.bigIntEquals(event.params.amt, demotedTx.amt);
-  assert.bigIntEquals(event.params.tokenId, demotedTx.tokenId);
+  const demotionTx = DemotionTx.load(id);
+  assert.assertNotNull(demotionTx);
+  if (!demotionTx) return;
+  assert.bytesEquals(event.params.demoter, demotionTx.demoter);
+  assert.bigIntEquals(event.params.amt, demotionTx.amt);
+  assert.bigIntEquals(event.params.tokenId, demotionTx.tokenId);
 };
 
 export const expectInitializedAdded = (event: Initialized): void => {
@@ -79,48 +79,48 @@ export const expectInitializedAdded = (event: Initialized): void => {
   assert.i32Equals(event.params.version, initializedTx.version);
 };
 
-export const expectPromotedAdded = (event: Promoted): void => {
+export const expectPromotionAdded = (event: Promotion): void => {
   const id = createId(event.transaction.hash, event.transactionLogIndex);
-  const promotedTx = PromotedTx.load(id);
-  assert.assertNotNull(promotedTx);
-  if (!promotedTx) return;
-  assert.bytesEquals(event.params.promoter, promotedTx.promoter);
-  assert.bigIntEquals(event.params.amt, promotedTx.amt);
-  assert.bigIntEquals(event.params.tokenId, promotedTx.tokenId);
+  const promotionTx = PromotionTx.load(id);
+  assert.assertNotNull(promotionTx);
+  if (!promotionTx) return;
+  assert.bytesEquals(event.params.promoter, promotionTx.promoter);
+  assert.bigIntEquals(event.params.amt, promotionTx.amt);
+  assert.bigIntEquals(event.params.tokenId, promotionTx.tokenId);
 };
 
-export const expectProposalApprovedAdded = (event: ProposalApproved): void => {
+export const expectApprovedProposalAdded = (event: ApprovedProposal): void => {
   const id = createId(event.transaction.hash, event.transactionLogIndex);
-  const proposalApprovedTx = ProposalApprovedTx.load(id);
-  assert.assertNotNull(proposalApprovedTx);
-  if (!proposalApprovedTx) return;
-  assert.bigIntEquals(event.params.proposalId, proposalApprovedTx.proposalId);
-  assert.bigIntEquals(event.params.tokenId, proposalApprovedTx.tokenId);
-  assert.bigIntEquals(event.params.approvals, proposalApprovedTx.approvals);
+  const approvedProposalTx = ApprovedProposalTx.load(id);
+  assert.assertNotNull(approvedProposalTx);
+  if (!approvedProposalTx) return;
+  assert.bigIntEquals(event.params.proposalId, approvedProposalTx.proposalId);
+  assert.bigIntEquals(event.params.tokenId, approvedProposalTx.tokenId);
+  assert.bigIntEquals(event.params.approvals, approvedProposalTx.approvals);
 };
 
-export const expectProposalCreatedAdded = (event: ProposalCreated): void => {
+export const expectCreatedProposalAdded = (event: CreatedProposal): void => {
   const id = createId(event.transaction.hash, event.transactionLogIndex);
-  const proposalCreatedTx = ProposalCreatedTx.load(id);
-  assert.assertNotNull(proposalCreatedTx);
-  if (!proposalCreatedTx) return;
-  assert.bytesEquals(changetype<Address>(event.params.target), changetype<Address>(proposalCreatedTx.target));
+  const createdProposalTx = CreatedProposalTx.load(id);
+  assert.assertNotNull(createdProposalTx);
+  if (!createdProposalTx) return;
+  assert.bytesEquals(changetype<Address>(event.params.target), changetype<Address>(createdProposalTx.target));
 };
 
-export const expectProposalExecutedAdded = (event: ProposalExecuted): void => {
+export const expectExecutedProposalAdded = (event: ExecutedProposal): void => {
   const id = createId(event.transaction.hash, event.transactionLogIndex);
-  const proposalExecutedTx = ProposalExecutedTx.load(id);
-  assert.assertNotNull(proposalExecutedTx);
-  if (!proposalExecutedTx) return;
-  assert.bigIntEquals(event.params.proposalId, proposalExecutedTx.proposalId);
+  const executedProposalTx = ExecutedProposalTx.load(id);
+  assert.assertNotNull(executedProposalTx);
+  if (!executedProposalTx) return;
+  assert.bigIntEquals(event.params.proposalId, executedProposalTx.proposalId);
 };
 
-export const expectProposalCanceledAdded = (event: ProposalCanceled): void => {
+export const expectCanceledProposalAdded = (event: CanceledProposal): void => {
   const id = createId(event.transaction.hash, event.transactionLogIndex);
-  const proposalCanceledTx = ProposalCanceledTx.load(id);
-  assert.assertNotNull(proposalCanceledTx);
-  if (!proposalCanceledTx) return;
-  assert.bigIntEquals(event.params.proposalId, proposalCanceledTx.proposalId);
+  const canceledProposalTx = CanceledProposalTx.load(id);
+  assert.assertNotNull(canceledProposalTx);
+  if (!canceledProposalTx) return;
+  assert.bigIntEquals(event.params.proposalId, canceledProposalTx.proposalId);
 };
 
 export const expectReceivedEtherAdded = (event: ReceivedEther): void => {

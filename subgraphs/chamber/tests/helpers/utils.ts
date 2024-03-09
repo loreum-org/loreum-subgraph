@@ -5,13 +5,13 @@ import { ChamberDeployed, OwnershipTransferred } from "../../generated/Registry/
 
 import {
   ChangedGuard,
-  Demoted,
+  Demotion,
   Initialized,
-  Promoted,
-  ProposalApproved,
-  ProposalCreated,
-  ProposalExecuted,
-  ProposalCanceled,
+  Promotion,
+  ApprovedProposal,
+  CreatedProposal,
+  ExecutedProposal,
+  CanceledProposal,
   ReceivedEther,
   ReceivedFallback,
 } from "../../generated/templates/Chamber/Chamber";
@@ -81,9 +81,9 @@ export function createChangedGuardEvent(guard: string): ChangedGuard {
   return changedGuardEvent;
 }
 
-export function createDemotedEvent(demoter: string, amt: i32, tokenId: i32): Demoted {
+export function createDemotionEvent(demoter: string, amt: i32, tokenId: i32): Demotion {
   const mockEvent = newMockEvent();
-  const demotedEvent = new Demoted(
+  const demotionEvent = new Demotion(
     mockEvent.address,
     mockEvent.logIndex,
     mockEvent.transactionLogIndex,
@@ -93,10 +93,10 @@ export function createDemotedEvent(demoter: string, amt: i32, tokenId: i32): Dem
     [],
     mockEvent.receipt
   );
-  demotedEvent.parameters.push(addressEventParam("demoter", demoter));
-  demotedEvent.parameters.push(uintEventParam("amt", amt));
-  demotedEvent.parameters.push(uintEventParam("tokenId", tokenId));
-  return demotedEvent;
+  demotionEvent.parameters.push(addressEventParam("demoter", demoter));
+  demotionEvent.parameters.push(uintEventParam("amt", amt));
+  demotionEvent.parameters.push(uintEventParam("tokenId", tokenId));
+  return demotionEvent;
 }
 
 export function createInitializedEvent(version: i32): Initialized {
@@ -115,9 +115,9 @@ export function createInitializedEvent(version: i32): Initialized {
   return initializedEvent;
 }
 
-export function createPromotedEvent(promoter: string, amt: i32, tokenId: i32): Promoted {
+export function createPromotionEvent(promoter: string, amt: i32, tokenId: i32): Promotion {
   const mockEvent = newMockEvent();
-  const promotedEvent = new Promoted(
+  const promotionEvent = new Promotion(
     mockEvent.address,
     mockEvent.logIndex,
     mockEvent.transactionLogIndex,
@@ -127,15 +127,15 @@ export function createPromotedEvent(promoter: string, amt: i32, tokenId: i32): P
     [],
     mockEvent.receipt
   );
-  promotedEvent.parameters.push(addressEventParam("demoter", promoter));
-  promotedEvent.parameters.push(uintEventParam("amt", amt));
-  promotedEvent.parameters.push(uintEventParam("tokenId", tokenId));
-  return promotedEvent;
+  promotionEvent.parameters.push(addressEventParam("demoter", promoter));
+  promotionEvent.parameters.push(uintEventParam("amt", amt));
+  promotionEvent.parameters.push(uintEventParam("tokenId", tokenId));
+  return promotionEvent;
 }
 
-export function createProposalApprovedEvent(proposalId: i32, tokenId: i32, approvals: i32): ProposalApproved {
+export function createApprovedProposalEvent(proposalId: i32, tokenId: i32, approvals: i32): ApprovedProposal {
   const mockEvent = newMockEvent();
-  const proposalApprovedEvent = new ProposalApproved(
+  const approvedProposalEvent = new ApprovedProposal(
     mockEvent.address,
     mockEvent.logIndex,
     mockEvent.transactionLogIndex,
@@ -145,22 +145,22 @@ export function createProposalApprovedEvent(proposalId: i32, tokenId: i32, appro
     [],
     mockEvent.receipt
   );
-  proposalApprovedEvent.parameters.push(uintEventParam("proposalId", proposalId));
-  proposalApprovedEvent.parameters.push(uintEventParam("tokenId", tokenId));
-  proposalApprovedEvent.parameters.push(uintEventParam("approvals", approvals));
-  return proposalApprovedEvent;
+  approvedProposalEvent.parameters.push(uintEventParam("proposalId", proposalId));
+  approvedProposalEvent.parameters.push(uintEventParam("tokenId", tokenId));
+  approvedProposalEvent.parameters.push(uintEventParam("approvals", approvals));
+  return approvedProposalEvent;
 }
 
-export function createProposalCreatedEvent(
+export function createCreatedProposalEvent(
   proposalId: i32,
   target: string[],
   value: i32[],
   data: string[],
   voters: i32[],
   nonce: i32
-): ProposalCreated {
+): CreatedProposal {
   const mockEvent = newMockEvent();
-  const proposalCreatedEvent = new ProposalCreated(
+  const createdProposalEvent = new CreatedProposal(
     mockEvent.address,
     mockEvent.logIndex,
     mockEvent.transactionLogIndex,
@@ -170,20 +170,20 @@ export function createProposalCreatedEvent(
     [],
     mockEvent.receipt
   );
-  proposalCreatedEvent.parameters.push(uintEventParam("proposalId", proposalId));
-  proposalCreatedEvent.parameters.push(
+  createdProposalEvent.parameters.push(uintEventParam("proposalId", proposalId));
+  createdProposalEvent.parameters.push(
     new ethereum.EventParam("target", ethereum.Value.fromAddressArray(changetype<Bytes[]>(target)))
   );
-  proposalCreatedEvent.parameters.push(new ethereum.EventParam("value", ethereum.Value.fromI32Array(value)));
-  proposalCreatedEvent.parameters.push(new ethereum.EventParam("data", ethereum.Value.fromStringArray(data)));
-  proposalCreatedEvent.parameters.push(new ethereum.EventParam("voters", ethereum.Value.fromI32Array(voters)));
-  proposalCreatedEvent.parameters.push(uintEventParam("nonce", nonce));
-  return proposalCreatedEvent;
+  createdProposalEvent.parameters.push(new ethereum.EventParam("value", ethereum.Value.fromI32Array(value)));
+  createdProposalEvent.parameters.push(new ethereum.EventParam("data", ethereum.Value.fromStringArray(data)));
+  createdProposalEvent.parameters.push(new ethereum.EventParam("voters", ethereum.Value.fromI32Array(voters)));
+  createdProposalEvent.parameters.push(uintEventParam("nonce", nonce));
+  return createdProposalEvent;
 }
 
-export function createProposalExecutedEvent(proposalId: i32): ProposalExecuted {
+export function createExecutedProposalEvent(proposalId: i32): ExecutedProposal {
   const mockEvent = newMockEvent();
-  const proposalExecutedEvent = new ProposalExecuted(
+  const executedProposalEvent = new ExecutedProposal(
     mockEvent.address,
     mockEvent.logIndex,
     mockEvent.transactionLogIndex,
@@ -193,13 +193,13 @@ export function createProposalExecutedEvent(proposalId: i32): ProposalExecuted {
     [],
     mockEvent.receipt
   );
-  proposalExecutedEvent.parameters.push(uintEventParam("proposalId", proposalId));
-  return proposalExecutedEvent;
+  executedProposalEvent.parameters.push(uintEventParam("proposalId", proposalId));
+  return executedProposalEvent;
 }
 
-export function createProposalCanceledEvent(proposalId: i32): ProposalCanceled {
+export function createCanceledProposalEvent(proposalId: i32): CanceledProposal {
   const mockEvent = newMockEvent();
-  const proposalCanceledEvent = new ProposalCanceled(
+  const canceledProposalEvent = new CanceledProposal(
     mockEvent.address,
     mockEvent.logIndex,
     mockEvent.transactionLogIndex,
@@ -209,8 +209,8 @@ export function createProposalCanceledEvent(proposalId: i32): ProposalCanceled {
     [],
     mockEvent.receipt
   );
-  proposalCanceledEvent.parameters.push(uintEventParam("proposalId", proposalId));
-  return proposalCanceledEvent;
+  canceledProposalEvent.parameters.push(uintEventParam("proposalId", proposalId));
+  return canceledProposalEvent;
 }
 
 export function createReceivedEtherEvent(sender: string, value: i32): ReceivedEther {

@@ -540,83 +540,7 @@
   },
   {
     "type": "event",
-    "name": "ChangedGuard",
-    "inputs": [
-      {
-        "name": "guard",
-        "type": "address",
-        "indexed": true,
-        "internalType": "address"
-      }
-    ],
-    "anonymous": false
-  },
-  {
-    "type": "event",
-    "name": "Demoted",
-    "inputs": [
-      {
-        "name": "demoter",
-        "type": "address",
-        "indexed": false,
-        "internalType": "address"
-      },
-      {
-        "name": "amt",
-        "type": "uint256",
-        "indexed": false,
-        "internalType": "uint256"
-      },
-      {
-        "name": "tokenId",
-        "type": "uint256",
-        "indexed": false,
-        "internalType": "uint256"
-      }
-    ],
-    "anonymous": false
-  },
-  {
-    "type": "event",
-    "name": "Initialized",
-    "inputs": [
-      {
-        "name": "version",
-        "type": "uint8",
-        "indexed": false,
-        "internalType": "uint8"
-      }
-    ],
-    "anonymous": false
-  },
-  {
-    "type": "event",
-    "name": "Promoted",
-    "inputs": [
-      {
-        "name": "promoter",
-        "type": "address",
-        "indexed": false,
-        "internalType": "address"
-      },
-      {
-        "name": "amt",
-        "type": "uint256",
-        "indexed": false,
-        "internalType": "uint256"
-      },
-      {
-        "name": "tokenId",
-        "type": "uint256",
-        "indexed": false,
-        "internalType": "uint256"
-      }
-    ],
-    "anonymous": false
-  },
-  {
-    "type": "event",
-    "name": "ProposalApproved",
+    "name": "ApprovedProposal",
     "inputs": [
       {
         "name": "proposalId",
@@ -641,7 +565,7 @@
   },
   {
     "type": "event",
-    "name": "ProposalCanceled",
+    "name": "CanceledProposal",
     "inputs": [
       {
         "name": "proposalId",
@@ -654,7 +578,20 @@
   },
   {
     "type": "event",
-    "name": "ProposalCreated",
+    "name": "ChangedGuard",
+    "inputs": [
+      {
+        "name": "guard",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "CreatedProposal",
     "inputs": [
       {
         "name": "proposalId",
@@ -697,10 +634,73 @@
   },
   {
     "type": "event",
-    "name": "ProposalExecuted",
+    "name": "Demotion",
+    "inputs": [
+      {
+        "name": "demoter",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "amt",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "tokenId",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "ExecutedProposal",
     "inputs": [
       {
         "name": "proposalId",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "Initialized",
+    "inputs": [
+      {
+        "name": "version",
+        "type": "uint8",
+        "indexed": false,
+        "internalType": "uint8"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "Promotion",
+    "inputs": [
+      {
+        "name": "promoter",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "amt",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "tokenId",
         "type": "uint256",
         "indexed": false,
         "internalType": "uint256"
