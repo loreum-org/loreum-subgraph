@@ -31,7 +31,7 @@ export function handleChangedGuard(event: ChangedGuardEvent): void {
   const id = createId(event.transaction.hash, event.logIndex);
   const changedGuardTx = new ChangedGuard(id);
   changedGuardTx.guard = event.params.guard;
-  changedGuardTx.contractAddress = changetype<Bytes>(event.transaction.to);
+  changedGuardTx.chamber = changetype<Bytes>(event.transaction.to);
 
   changedGuardTx.blockNumber = event.block.number;
   changedGuardTx.blockTimestamp = event.block.timestamp;
@@ -46,7 +46,7 @@ export function handleDemotion(event: DemotionEvent): void {
   demotionTx.demoter = event.params.demoter;
   demotionTx.amt = event.params.amt;
   demotionTx.tokenId = event.params.tokenId;
-  demotionTx.contractAddress = changetype<Bytes>(event.transaction.to);
+  demotionTx.chamber = changetype<Bytes>(event.transaction.to);
 
   demotionTx.blockNumber = event.block.number;
   demotionTx.blockTimestamp = event.block.timestamp;
@@ -59,7 +59,7 @@ export function handleInitialized(event: InitializedEvent): void {
   const id = createId(event.transaction.hash, event.logIndex);
   const initializedTx = new Initialized(id);
   initializedTx.version = event.params.version;
-  initializedTx.contractAddress = changetype<Bytes>(event.transaction.to);
+  initializedTx.chamber = changetype<Bytes>(event.transaction.to);
 
   initializedTx.blockNumber = event.block.number;
   initializedTx.blockTimestamp = event.block.timestamp;
@@ -74,7 +74,7 @@ export function handlePromotion(event: PromotionEvent): void {
   promotionTx.promoter = event.params.promoter;
   promotionTx.amt = event.params.amt;
   promotionTx.tokenId = event.params.tokenId;
-  promotionTx.contractAddress = changetype<Bytes>(event.transaction.to);
+  promotionTx.chamber = changetype<Bytes>(event.transaction.to);
 
   promotionTx.blockNumber = event.block.number;
   promotionTx.blockTimestamp = event.block.timestamp;
@@ -89,7 +89,7 @@ export function handleApprovedProposal(event: ApprovedProposalEvent): void {
   approvedProposalTx.proposalId = event.params.proposalId;
   approvedProposalTx.tokenId = event.params.tokenId;
   approvedProposalTx.approvals = event.params.approvals;
-  approvedProposalTx.contractAddress = changetype<Bytes>(event.transaction.to);
+  approvedProposalTx.chamber = changetype<Bytes>(event.transaction.to);
 
   approvedProposalTx.blockNumber = event.block.number;
   approvedProposalTx.blockTimestamp = event.block.timestamp;
@@ -107,7 +107,7 @@ export function handleCreatedProposal(event: CreatedProposalEvent): void {
   createdProposalTx.data = event.params.data;
   createdProposalTx.voters = event.params.voters;
   createdProposalTx.nonce = event.params.nonce;
-  createdProposalTx.contractAddress = changetype<Bytes>(event.transaction.to);
+  createdProposalTx.chamber = changetype<Bytes>(event.transaction.to);
 
   createdProposalTx.blockNumber = event.block.number;
   createdProposalTx.blockTimestamp = event.block.timestamp;
@@ -120,7 +120,7 @@ export function handleExecutedProposal(event: ExecutedProposalEvent): void {
   const id = createId(event.transaction.hash, event.logIndex);
   const executedProposalTx = new ExecutedProposal(id);
   executedProposalTx.proposalId = event.params.proposalId;
-  executedProposalTx.contractAddress = changetype<Bytes>(event.transaction.to);
+  executedProposalTx.chamber = changetype<Bytes>(event.transaction.to);
 
   executedProposalTx.blockNumber = event.block.number;
   executedProposalTx.blockTimestamp = event.block.timestamp;
@@ -133,7 +133,7 @@ export function handleCanceledProposal(event: CanceledProposalEvent): void {
   const id = createId(event.transaction.hash, event.logIndex);
   const canceledProposalTx = new CanceledProposal(id);
   canceledProposalTx.proposalId = event.params.proposalId;
-  canceledProposalTx.contractAddress = changetype<Bytes>(event.transaction.to);
+  canceledProposalTx.chamber = changetype<Bytes>(event.transaction.to);
 
   canceledProposalTx.blockNumber = event.block.number;
   canceledProposalTx.blockTimestamp = event.block.timestamp;
@@ -147,7 +147,7 @@ export function handleReceivedEther(event: ReceivedEtherEvent): void {
   const receivedEtherTx = new ReceivedEther(id);
   receivedEtherTx.sender = event.params.sender;
   receivedEtherTx.value = event.params.value;
-  receivedEtherTx.contractAddress = changetype<Bytes>(event.transaction.to);
+  receivedEtherTx.chamber = changetype<Bytes>(event.transaction.to);
 
   receivedEtherTx.blockNumber = event.block.number;
   receivedEtherTx.blockTimestamp = event.block.timestamp;
@@ -161,7 +161,7 @@ export function handleReceivedFallback(event: ReceivedFallbackEvent): void {
   const receivedFallbackTx = new ReceivedFallback(id);
   receivedFallbackTx.sender = event.params.sender;
   receivedFallbackTx.value = event.params.value;
-  receivedFallbackTx.contractAddress = changetype<Bytes>(event.transaction.to);
+  receivedFallbackTx.chamber = changetype<Bytes>(event.transaction.to);
 
   receivedFallbackTx.blockNumber = event.block.number;
   receivedFallbackTx.blockTimestamp = event.block.timestamp;
