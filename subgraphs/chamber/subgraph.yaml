@@ -39,12 +39,13 @@ templates:
       language: wasm/assemblyscript
       entities:
         - ChangedGuard
-        - Demoted
+        - Demotion
         - Initialized
-        - Promoted
-        - ProposalApproved
-        - ProposalCreated
-        - ProposalExecuted
+        - Promotion
+        - ApprovedProposal
+        - CreatedProposal
+        - ExecutedProposal
+        - CanceledProposal
         - ReceivedEther
         - ReceivedFallback
       abis:
@@ -53,20 +54,20 @@ templates:
       eventHandlers:
         - event: ChangedGuard(indexed address)
           handler: handleChangedGuard
-        - event: Demoted(address,uint256,uint256)
-          handler: handleDemoted
+        - event: Demotion(address,uint256,uint256)
+          handler: handleDemotion
         - event: Initialized(uint8)
           handler: handleInitialized
-        - event: Promoted(address,uint256,uint256)
-          handler: handlePromoted
-        - event: ProposalApproved(uint256,uint256,uint256)
-          handler: handleProposalApproved
-        - event: ProposalCreated(uint256,address[],uint256[],bytes[],uint256[5],uint256)
-          handler: handleProposalCreated
-        - event: ProposalExecuted(uint256)
-          handler: handleProposalExecuted
-        - event: ProposalCanceled(uint256)
-          handler: handleProposalCanceled
+        - event: Promotion(address,uint256,uint256)
+          handler: handlePromotion
+        - event: ApprovedProposal(uint256,uint256,uint256)
+          handler: handleApprovedProposal
+        - event: CreatedProposal(uint256,address[],uint256[],bytes[],uint256[5],uint256)
+          handler: handleCreatedProposal
+        - event: ExecutedProposal(uint256)
+          handler: handleExecutedProposal
+        - event: CanceledProposal(uint256)
+          handler: handleCanceledProposal
         - event: ReceivedEther(indexed address,uint256)
           handler: handleReceivedEther
         - event: ReceivedFallback(indexed address,uint256)

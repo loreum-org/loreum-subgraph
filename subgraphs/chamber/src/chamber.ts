@@ -3,26 +3,26 @@ import { Bytes } from "@graphprotocol/graph-ts";
 
 import {
   ChangedGuard as ChangedGuardEvent,
-  Demoted as DemotedEvent,
+  Demotion as DemotionEvent,
   Initialized as InitializedEvent,
-  Promoted as PromotedEvent,
-  ProposalApproved as ProposalApprovedEvent,
-  ProposalCreated as ProposalCreatedEvent,
-  ProposalExecuted as ProposalExecutedEvent,
-  ProposalCanceled as ProposalCanceledEvent,
+  Promotion as PromotionEvent,
+  ApprovedProposal as ApprovedProposalEvent,
+  CreatedProposal as CreatedProposalEvent,
+  ExecutedProposal as ExecutedProposalEvent,
+  CanceledProposal as CanceledProposalEvent,
   ReceivedEther as ReceivedEtherEvent,
   ReceivedFallback as ReceivedFallbackEvent,
 } from "../generated/templates/Chamber/Chamber";
 
 import {
   ChangedGuard,
-  Demoted,
+  Demotion,
   Initialized,
-  Promoted,
-  ProposalApproved,
-  ProposalCreated,
-  ProposalExecuted,
-  ProposalCanceled,
+  Promotion,
+  ApprovedProposal,
+  CreatedProposal,
+  ExecutedProposal,
+  CanceledProposal,
   ReceivedEther,
   ReceivedFallback,
 } from "../generated/schema";
@@ -40,19 +40,19 @@ export function handleChangedGuard(event: ChangedGuardEvent): void {
   changedGuardTx.save();
 }
 
-export function handleDemoted(event: DemotedEvent): void {
+export function handleDemotion(event: DemotionEvent): void {
   const id = createId(event.transaction.hash, event.logIndex);
-  const demotedTx = new Demoted(id);
-  demotedTx.demoter = event.params.demoter;
-  demotedTx.amt = event.params.amt;
-  demotedTx.tokenId = event.params.tokenId;
-  demotedTx.contractAddress = changetype<Bytes>(event.transaction.to);
+  const demotionTx = new Demotion(id);
+  demotionTx.demoter = event.params.demoter;
+  demotionTx.amt = event.params.amt;
+  demotionTx.tokenId = event.params.tokenId;
+  demotionTx.contractAddress = changetype<Bytes>(event.transaction.to);
 
-  demotedTx.blockNumber = event.block.number;
-  demotedTx.blockTimestamp = event.block.timestamp;
-  demotedTx.transactionHash = event.transaction.hash;
+  demotionTx.blockNumber = event.block.number;
+  demotionTx.blockTimestamp = event.block.timestamp;
+  demotionTx.transactionHash = event.transaction.hash;
 
-  demotedTx.save();
+  demotionTx.save();
 }
 
 export function handleInitialized(event: InitializedEvent): void {
@@ -68,78 +68,78 @@ export function handleInitialized(event: InitializedEvent): void {
   initializedTx.save();
 }
 
-export function handlePromoted(event: PromotedEvent): void {
+export function handlePromotion(event: PromotionEvent): void {
   const id = createId(event.transaction.hash, event.logIndex);
-  const promotedTx = new Promoted(id);
-  promotedTx.promoter = event.params.promoter;
-  promotedTx.amt = event.params.amt;
-  promotedTx.tokenId = event.params.tokenId;
-  promotedTx.contractAddress = changetype<Bytes>(event.transaction.to);
+  const promotionTx = new Promotion(id);
+  promotionTx.promoter = event.params.promoter;
+  promotionTx.amt = event.params.amt;
+  promotionTx.tokenId = event.params.tokenId;
+  promotionTx.contractAddress = changetype<Bytes>(event.transaction.to);
 
-  promotedTx.blockNumber = event.block.number;
-  promotedTx.blockTimestamp = event.block.timestamp;
-  promotedTx.transactionHash = event.transaction.hash;
+  promotionTx.blockNumber = event.block.number;
+  promotionTx.blockTimestamp = event.block.timestamp;
+  promotionTx.transactionHash = event.transaction.hash;
 
-  promotedTx.save();
+  promotionTx.save();
 }
 
-export function handleProposalApproved(event: ProposalApprovedEvent): void {
+export function handleApprovedProposal(event: ApprovedProposalEvent): void {
   const id = createId(event.transaction.hash, event.logIndex);
-  const proposalApprovedTx = new ProposalApproved(id);
-  proposalApprovedTx.proposalId = event.params.proposalId;
-  proposalApprovedTx.tokenId = event.params.tokenId;
-  proposalApprovedTx.approvals = event.params.approvals;
-  proposalApprovedTx.contractAddress = changetype<Bytes>(event.transaction.to);
+  const approvedProposalTx = new ApprovedProposal(id);
+  approvedProposalTx.proposalId = event.params.proposalId;
+  approvedProposalTx.tokenId = event.params.tokenId;
+  approvedProposalTx.approvals = event.params.approvals;
+  approvedProposalTx.contractAddress = changetype<Bytes>(event.transaction.to);
 
-  proposalApprovedTx.blockNumber = event.block.number;
-  proposalApprovedTx.blockTimestamp = event.block.timestamp;
-  proposalApprovedTx.transactionHash = event.transaction.hash;
+  approvedProposalTx.blockNumber = event.block.number;
+  approvedProposalTx.blockTimestamp = event.block.timestamp;
+  approvedProposalTx.transactionHash = event.transaction.hash;
 
-  proposalApprovedTx.save();
+  approvedProposalTx.save();
 }
 
-export function handleProposalCreated(event: ProposalCreatedEvent): void {
+export function handleCreatedProposal(event: CreatedProposalEvent): void {
   const id = createId(event.transaction.hash, event.logIndex);
-  const proposalCreatedTx = new ProposalCreated(id);
-  proposalCreatedTx.proposalId = event.params.proposalId;
-  proposalCreatedTx.target = changetype<Bytes[]>(event.params.target);
-  proposalCreatedTx.value = event.params.value;
-  proposalCreatedTx.data = event.params.data;
-  proposalCreatedTx.voters = event.params.voters;
-  proposalCreatedTx.nonce = event.params.nonce;
-  proposalCreatedTx.contractAddress = changetype<Bytes>(event.transaction.to);
+  const createdProposalTx = new CreatedProposal(id);
+  createdProposalTx.proposalId = event.params.proposalId;
+  createdProposalTx.target = changetype<Bytes[]>(event.params.target);
+  createdProposalTx.value = event.params.value;
+  createdProposalTx.data = event.params.data;
+  createdProposalTx.voters = event.params.voters;
+  createdProposalTx.nonce = event.params.nonce;
+  createdProposalTx.contractAddress = changetype<Bytes>(event.transaction.to);
 
-  proposalCreatedTx.blockNumber = event.block.number;
-  proposalCreatedTx.blockTimestamp = event.block.timestamp;
-  proposalCreatedTx.transactionHash = event.transaction.hash;
+  createdProposalTx.blockNumber = event.block.number;
+  createdProposalTx.blockTimestamp = event.block.timestamp;
+  createdProposalTx.transactionHash = event.transaction.hash;
 
-  proposalCreatedTx.save();
+  createdProposalTx.save();
 }
 
-export function handleProposalExecuted(event: ProposalExecutedEvent): void {
+export function handleExecutedProposal(event: ExecutedProposalEvent): void {
   const id = createId(event.transaction.hash, event.logIndex);
-  const proposalExecutedTx = new ProposalExecuted(id);
-  proposalExecutedTx.proposalId = event.params.proposalId;
-  proposalExecutedTx.contractAddress = changetype<Bytes>(event.transaction.to);
+  const executedProposalTx = new ExecutedProposal(id);
+  executedProposalTx.proposalId = event.params.proposalId;
+  executedProposalTx.contractAddress = changetype<Bytes>(event.transaction.to);
 
-  proposalExecutedTx.blockNumber = event.block.number;
-  proposalExecutedTx.blockTimestamp = event.block.timestamp;
-  proposalExecutedTx.transactionHash = event.transaction.hash;
+  executedProposalTx.blockNumber = event.block.number;
+  executedProposalTx.blockTimestamp = event.block.timestamp;
+  executedProposalTx.transactionHash = event.transaction.hash;
 
-  proposalExecutedTx.save();
+  executedProposalTx.save();
 }
 
-export function handleProposalCanceled(event: ProposalCanceledEvent): void {
+export function handleCanceledProposal(event: CanceledProposalEvent): void {
   const id = createId(event.transaction.hash, event.logIndex);
-  const proposalCanceledTx = new ProposalCanceled(id);
-  proposalCanceledTx.proposalId = event.params.proposalId;
-  proposalCanceledTx.contractAddress = changetype<Bytes>(event.transaction.to);
+  const canceledProposalTx = new CanceledProposal(id);
+  canceledProposalTx.proposalId = event.params.proposalId;
+  canceledProposalTx.contractAddress = changetype<Bytes>(event.transaction.to);
 
-  proposalCanceledTx.blockNumber = event.block.number;
-  proposalCanceledTx.blockTimestamp = event.block.timestamp;
-  proposalCanceledTx.transactionHash = event.transaction.hash;
+  canceledProposalTx.blockNumber = event.block.number;
+  canceledProposalTx.blockTimestamp = event.block.timestamp;
+  canceledProposalTx.transactionHash = event.transaction.hash;
 
-  proposalCanceledTx.save();
+  canceledProposalTx.save();
 }
 
 export function handleReceivedEther(event: ReceivedEtherEvent): void {

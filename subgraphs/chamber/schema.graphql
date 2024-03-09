@@ -28,7 +28,7 @@ type ChangedGuard @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
-type Demoted @entity(immutable: true) {
+type Demotion @entity(immutable: true) {
   id: ID!
   demoter: Bytes! # address
   amt: BigInt! # uint256
@@ -48,7 +48,7 @@ type Initialized @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
-type Promoted @entity(immutable: true) {
+type Promotion @entity(immutable: true) {
   id: ID!
   promoter: Bytes! # address
   amt: BigInt! # uint256
@@ -59,7 +59,7 @@ type Promoted @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
-type ProposalApproved @entity(immutable: true) {
+type ApprovedProposal @entity(immutable: true) {
   id: ID!
   proposalId: BigInt! # uint256
   tokenId: BigInt! # uint256
@@ -70,7 +70,7 @@ type ProposalApproved @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
-type ProposalCreated @entity(immutable: true) {
+type CreatedProposal @entity(immutable: true) {
   id: ID!
   proposalId: BigInt! # uint256
   target: [Bytes!]! # address[]
@@ -84,7 +84,7 @@ type ProposalCreated @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
-type ProposalExecuted @entity(immutable: true) {
+type ExecutedProposal @entity(immutable: true) {
   id: ID!
   proposalId: BigInt! # uint256
   contractAddress: Bytes! # address
@@ -93,7 +93,7 @@ type ProposalExecuted @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
-type ProposalCanceled @entity(immutable: true) {
+type CanceledProposal @entity(immutable: true) {
   id: ID!
   proposalId: BigInt! # uint256
   contractAddress: Bytes! # address
