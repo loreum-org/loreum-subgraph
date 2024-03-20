@@ -37,7 +37,7 @@ jobs:
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: echo "name=dir::$(yarn cache dir)" >> $GITHUB_OUTPUT
 
       - uses: actions/cache@v4
         id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
@@ -53,5 +53,5 @@ jobs:
       - name: Deploy to Holesky
         env:
           VERSION_TAG: ${{ steps.tag_version.outputs.new_tag }}
-          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
-        run: export DEPLOY_KEY=${{ env.DEPLOY_KEY }} && export VERSION_TAG=${{ env.VERSION_TAG }} && yarn deploy:holesky
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        run: export DEPLOY_KEY=${{ env.ACCESS_TOKEN }} && export VERSION_TAG=${{ env.VERSION_TAG }} && yarn deploy:holesky
