@@ -4,11 +4,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: Registry
-    network: sepolia
+    network: holesky
     source:
       abi: Registry
-      address: "0x46A49D4391F2F220D3661b2a2BFe4b306EE18845"
-      startBlock: 5281759
+      address: "0x5ed9315ab0274B0C546b71ed5a7ABE9982FF1E8D"
+      startBlock: 1175645
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -30,7 +30,7 @@ dataSources:
 templates:
   - kind: ethereum
     name: Chamber
-    network: sepolia
+    network: holesky
     source:
       abi: Chamber
     mapping:

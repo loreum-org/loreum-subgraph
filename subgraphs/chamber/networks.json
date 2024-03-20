@@ -4,5 +4,11 @@
       "address": "0x46A49D4391F2F220D3661b2a2BFe4b306EE18845",
       "startBlock": 5433794
     }
+  },
+  "holesky": {
+    "Registry": {
+      "address": "0x5ed9315ab0274B0C546b71ed5a7ABE9982FF1E8D",
+      "startBlock": 1175645
+    }
   }
 }
