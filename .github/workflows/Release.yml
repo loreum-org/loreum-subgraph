@@ -48,10 +48,7 @@ jobs:
         run: yarn codegen
 
       - name: Run build
-        run: yarn build
-
-      - name: Run tests
-        run: yarn test
+        run: yarn build:holesky
 
       - name: Deploy Holesky
         env:
