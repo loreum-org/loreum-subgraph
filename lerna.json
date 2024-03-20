@@ -1,6 +1,6 @@
 {
   "npmClient": "npm",
   "packages": ["subgraphs/**/*"],
-  "useWorkspaces": false,
+  "useWorkspaces": true,
   "version": "independent"
 }

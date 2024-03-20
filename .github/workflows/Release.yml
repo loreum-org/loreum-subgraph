@@ -1,68 +1,57 @@
 name: Create Release
 
 on:
-  push:
+  pull_request:
+    types:
+      - closed
     branches:
       - main
 
 jobs:
-  release:
+  deploy:
+    name: DeploySubgraph
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - uses: actions-ecosystem/action-get-merged-pull-request@v1
-        id: get-merged-pull-request
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+
+      - name: Bump version and push tag
+        id: tag_version
+        uses: miguelfito/github-bump-and-tag-action@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: actions-ecosystem/action-release-label@v1
-        id: release-label
-        if: ${{ steps.get-merged-pull-request.outputs.title != null }}
+      - name: Create a GitHub release
+        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          labels: ${{ steps.get-merged-pull-request.outputs.labels }}
+          tag_name: ${{ steps.tag_version.outputs.new_tag }}
+          release_name: Release ${{ steps.tag_version.outputs.new_tag }}
+          body: ${{ steps.tag_version.outputs.changelog }}
 
-      - uses: actions-ecosystem/action-get-latest-tag@v1
-        id: get-latest-tag
-        if: ${{ steps.release-label.outputs.level != null }}
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/cache@v4
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
-          semver_only: true
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
 
-      - uses: actions-ecosystem/action-bump-semver@v1
-        id: bump-semver
-        if: ${{ steps.release-label.outputs.level != null }}
-        with:
-          current_version: ${{ steps.get-latest-tag.outputs.tag }}
-          level: ${{ steps.release-label.outputs.level }}
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
 
-      - uses: actions-ecosystem/action-regex-match@v2
-        id: regex-match
-        if: ${{ steps.bump-semver.outputs.new_version != null }}
-        with:
-          text: ${{ steps.get-merged-pull-request.outputs.body }}
-          regex: '```release_note([\s\S]*)```'
-
-      - uses: actions-ecosystem/action-push-tag@v1
-        if: ${{ steps.bump-semver.outputs.new_version != null }}
-        with:
-          tag: ${{ steps.bump-semver.outputs.new_version }}
-          message: "${{ steps.bump-semver.outputs.new_version }}: PR #${{ steps.get-merged-pull-request.outputs.number }} ${{ steps.get-merged-pull-request.outputs.title }}"
-
-      - uses: actions/create-release@v1
-        if: ${{ steps.release-label.outputs.level == 'major' || steps.release-label.outputs.level == 'minor' }}
+      - name: Deploy to Holesky
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ steps.bump-semver.outputs.new_version }}
-          release_name: ${{ steps.bump-semver.outputs.new_version }}
-          body: ${{ steps.regex-match.outputs.group1 }}
-
-      - uses: actions-ecosystem/action-create-comment@v1
-        if: ${{ steps.bump-semver.outputs.new_version != null }}
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          number: ${{ steps.get-merged-pull-request.outputs.number }}
-          body: |
-            The new version [${{ steps.bump-semver.outputs.new_version }}](https://github.com/${{ github.repository }}/releases/tag/${{ steps.bump-semver.outputs.new_version }}) has been released :tada:
+          VERSION_TAG: ${{ steps.tag_version.outputs.new_tag }}
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+        run: export DEPLOY_KEY=${{ env.DEPLOY_KEY }} && export VERSION_TAG=${{ env.VERSION_TAG }} && yarn deploy:holesky
