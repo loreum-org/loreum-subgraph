@@ -1,6 +1,6 @@
 {
-  "npmClient": "yarn",
+  "npmClient": "npm",
   "packages": ["subgraphs/**/*"],
-  "useWorkspaces": true,
+  "useWorkspaces": false,
   "version": "independent"
 }

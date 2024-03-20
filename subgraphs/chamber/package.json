@@ -14,6 +14,8 @@
     "create:local": "graph create --node http://localhost:8020/ chamber --network localhost",
     "remove:local": "graph remove --node http://localhost:8020/ chamber --network localhost",
     "deploy:local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 chamber --version-label v0.0.1 --network localhost",
+    "build:holesky": "graph build subgraph.yaml --network holesky",
+    "deploy:holesky": "graph deploy --studio --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ loreum/loreum-registry-holesky subgraph.yaml --network holesky",
     "build:sepolia": "graph build subgraph.yaml --network sepolia",
     "build:mainnet": "graph build subgraph.yaml --network mainnet",
     "deploy:sepolia": "graph deploy --studio --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ loreum/loreum-registry-sepolia subgraph.yaml --network sepolia",
