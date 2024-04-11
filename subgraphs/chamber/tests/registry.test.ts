@@ -20,7 +20,7 @@ describe("Registry Test", () => {
       const event = createChamberDeployedEvent(chamber, serial, deployer, memberToken, govToken);
       return event;
     };
-    test("Handel ChamberDeployed Tx", () => {
+    test("Handle ChamberDeployed Tx", () => {
       const event = createMockChamberDeployedEvent();
       handleChamberDeployed(event);
       expectChamberDeployedAdded(event);
@@ -35,7 +35,7 @@ describe("Registry Test", () => {
       const event = createOwnershipTransferredEvent(previousOwner, newOwner);
       return event;
     };
-    test("Handel OwnershipTransferred Tx", () => {
+    test("Handle OwnershipTransferred Tx", () => {
       const event = createMockOwnershipTransferredEvent();
       handleOwnershipTransferred(event);
       expectOwnershipTransferredAdded(event);
