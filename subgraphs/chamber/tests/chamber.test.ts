@@ -60,7 +60,7 @@ describe("Chamber Test", () => {
       const event = createChangedGuardEvent(guard);
       return event;
     };
-    test("Handel ChangedGuard Tx", () => {
+    test("Handle ChangedGuard Tx", () => {
       const event = createMockChangedGuardEvent();
       handleChangedGuard(event);
       expectChangedGuardAdded(event);
@@ -76,7 +76,7 @@ describe("Chamber Test", () => {
       const event = createDemotionEvent(demoter, amt, tokenId);
       return event;
     };
-    test("Handel Demotion Tx", () => {
+    test("Handle Demotion Tx", () => {
       const event = createMockDemotionEvent();
       handleDemotion(event);
       expectDemotionAdded(event);
@@ -88,7 +88,7 @@ describe("Chamber Test", () => {
       const event = createInitializedEvent(version);
       return event;
     };
-    test("Handel Initialized Tx", () => {
+    test("Handle Initialized Tx", () => {
       const event = createMockInitializedEvent();
       handleInitialized(event);
       expectInitializedAdded(event);
@@ -104,7 +104,7 @@ describe("Chamber Test", () => {
       const event = createPromotionEvent(promoter, amt, tokenId);
       return event;
     };
-    test("Handel Promotion Tx", () => {
+    test("Handle Promotion Tx", () => {
       const event = createMockPromotionEvent();
       handlePromotion(event);
       expectPromotionAdded(event);
@@ -120,7 +120,7 @@ describe("Chamber Test", () => {
       const event = createApprovedProposalEvent(proposalId, tokenId, approvals);
       return event;
     };
-    test("Handel ApprovedProposal Tx", () => {
+    test("Handle ApprovedProposal Tx", () => {
       const event = createMockApprovedProposalEvent();
       handleApprovedProposal(event);
       expectApprovedProposalAdded(event);
@@ -146,7 +146,7 @@ describe("Chamber Test", () => {
   //         );
   //         return event;
   //     };
-  //     test ("Handel CreatedProposal Tx", () => {
+  //     test ("Handle CreatedProposal Tx", () => {
   //         const event = createMockCreatedProposalEvent();
   //         handleCreatedProposal(event);
   //         expectCreatedProposalAdded(event);
@@ -158,7 +158,7 @@ describe("Chamber Test", () => {
       const event = createExecutedProposalEvent(proposalId);
       return event;
     };
-    test("Handel ExecutedProposal Tx", () => {
+    test("Handle ExecutedProposal Tx", () => {
       const event = createMockExecutedProposalEvent();
       handleExecutedProposal(event);
       expectExecutedProposalAdded(event);
@@ -170,7 +170,7 @@ describe("Chamber Test", () => {
       const event = createCanceledProposalEvent(proposalId);
       return event;
     };
-    test("Handel CanceledProposal Tx", () => {
+    test("Handle CanceledProposal Tx", () => {
       const event = createMockCanceledProposalEvent();
       handleCanceledProposal(event);
       expectCanceledProposalAdded(event);
@@ -185,7 +185,7 @@ describe("Chamber Test", () => {
       const event = createReceivedEtherEvent(sender, value);
       return event;
     };
-    test("Handel ReceivedEther Tx", () => {
+    test("Handle ReceivedEther Tx", () => {
       const event = createMockReceivedEtherEvent();
       handleReceivedEther(event);
       expectReceivedEtherAdded(event);
@@ -200,7 +200,7 @@ describe("Chamber Test", () => {
       const event = createReceivedFallbackEvent(sender, value);
       return event;
     };
-    test("Handel ReceivedFallback Tx", () => {
+    test("Handle ReceivedFallback Tx", () => {
       const event = createMockReceivedFallbackEvent();
       handleReceivedFallback(event);
       expectReceivedFallbackAdded(event);

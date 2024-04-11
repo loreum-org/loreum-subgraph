@@ -17,8 +17,7 @@
     "name": "approve",
     "inputs": [
       { "name": "proposalId", "type": "uint256", "internalType": "uint256" },
-      { "name": "tokenId", "type": "uint256", "internalType": "uint256" },
-      { "name": "signature", "type": "bytes", "internalType": "bytes" }
+      { "name": "tokenId", "type": "uint256", "internalType": "uint256" }
     ],
     "outputs": [],
     "stateMutability": "nonpayable"
@@ -73,8 +72,7 @@
     "name": "execute",
     "inputs": [
       { "name": "proposalId", "type": "uint256", "internalType": "uint256" },
-      { "name": "tokenId", "type": "uint256", "internalType": "uint256" },
-      { "name": "signature", "type": "bytes", "internalType": "bytes" }
+      { "name": "tokenId", "type": "uint256", "internalType": "uint256" }
     ],
     "outputs": [],
     "stateMutability": "nonpayable"
