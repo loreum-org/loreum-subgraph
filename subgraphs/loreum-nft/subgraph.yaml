@@ -6,7 +6,7 @@ dataSources:
     name: LoreumNFT
     source:
       abi: LoreumNFT
-      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+      address: "0xB99DEdbDe082B8Be86f06449f2fC7b9FED044E15"
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -35,4 +35,4 @@ dataSources:
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
       file: ./src/index.ts
-    network: localhost
+    network: mainnet
