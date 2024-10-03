@@ -3,5 +3,10 @@
     "LoreumNFT": {
       "address": "0x5FbDB2315678afecb367f032d93F642f64180aa3"
     }
+  },
+  "mainnet": {
+    "LoreumNFT": {
+      "address": "0xB99DEdbDe082B8Be86f06449f2fC7b9FED044E15"
+    }
   }
 }
